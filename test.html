@@ -24,10 +24,23 @@
 			//var cube = new THREE.Mesh( geometry, material );
 			//scene.add( cube );
 			
-			var geometry = new THREE.PlaneGeometry( 10, 5);
+			//var geometry = new THREE.PlaneGeometry( 10, 5);
+			//var material = new THREE.MeshBasicMaterial({color: 0xcccccc, side: THREE.Doubleside});
+			//var plane = new THREE.Mesh(geometry, material);
+			//scene.add(plane);
+			
+			var geometry = new THREE.Geometry();
+			geometry.vertices.push(
+				new THREE.Vector3( -10,  10, 0 ),
+				new THREE.Vector3( -10, -10, 0 ),
+				new THREE.Vector3(  10, -10, 0 )
+			);
+			geometry.faces.push( new THREE.Face3( 0, 1, 2 ) );
+
+			geometry.computeBoundingSphere();
 			var material = new THREE.MeshBasicMaterial({color: 0xcccccc, side: THREE.Doubleside});
-			var plane = new THREE.Mesh(geometry, material);
-			scene.add(plane);
+			var golv = new THREE.Mesh(geometry, material);
+			scene.add(golv);
 
 			camera.position.z = 5;
 			
