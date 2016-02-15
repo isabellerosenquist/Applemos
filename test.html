@@ -53,21 +53,19 @@
 			geometry.vertices.push(new THREE.Vector3( 0.75, 0,  5));//Vertice 2
 			geometry.vertices.push(new THREE.Vector3(-0.75, 0,  5));//Vertice 3
 			
-			geometry.faces.push(new THREE.Face3( 0, 1, 2) );
-			geometry.faces.push(new THREE.Face3( 0, 2, 3) );
+			geometry.faces.push(new THREE.Face3( 0, 1, 2));
+			geometry.faces.push(new THREE.Face3( 0, 2, 3));
 			
-			//geometry.computeBoundingSphere();
+			geometry.computeBoundingSphere();
 			geometry.computeFaceNormals();
 
 			var material = new THREE.MeshBasicMaterial({
 				color: 0xffff00; 
-				side: THREE.Doubleside
-			});
+				side: THREE.Doubleside; });
 			var golv = new THREE.Mesh(geometry, material);
 	
 			scene.add(golv);
-			
-
+		
 			camera.position.z = 15;
 			//camera.position.x = 0;
 			//camera.position.y = 5;
