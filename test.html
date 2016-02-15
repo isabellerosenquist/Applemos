@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 		<title>Test Three.js</title>
 		<style>
-			body { margin: 0; background-color: black;}
+			body { margin: 0; background-color: black }; 
 			canvas { width: 100%; height: 100% }
 		</style>
 	</head>
@@ -19,8 +19,8 @@
 			//camera lookAt(scene.position);
 			
 			var renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
 			
 			//TESTKUB
 			//var geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -61,18 +61,19 @@
 
 			var material = new THREE.MeshBasicMaterial({
 				color: 0xffff00; 
-				side: THREE.Doubleside; });
+				side: THREE.Doubleside 
+			});
 			var golv = new THREE.Mesh(geometry, material);
 	
 			scene.add(golv);
 		
-			camera.position.z = 15;
-			//camera.position.x = 0;
-			//camera.position.y = 5;
+			camera.position.z = 5;
+			camera.position.x = 0;
+			camera.position.y = 2;
 			
 			function render() {
-				requestAnimationFrame( render );
-				renderer.render( scene, camera );
+				requestAnimationFrame(render);
+				renderer.render(scene, camera);
 			}
 			render();
 		</script>
