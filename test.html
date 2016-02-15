@@ -34,24 +34,37 @@
 			
 			//GOLV
 			var geometry = new THREE.Geometry();
-			geometry.vertices.push(
-				new THREE.Vector3( -0.75, 0,  10 ),
-				new THREE.Vector3( -0.75, 0, -10 ),
-				new THREE.Vector3( 	0.75, 0, -10 ),
-				new THREE.Vector3(  0.75, 0, -10 ),
-				new THREE.Vector3(  0.75, 0,  10 ),
-				new THREE.Vector3( -0.75, 0,  10 )
-			);
-			geometry.faces.push( new THREE.Face3( 0, 1, 2) );
-			geometry.faces.push( new THREE.Face3( 3, 4, 5) );
+			
+			//geometry.vertices.push(
+			//	new THREE.Vector3( -0.75, 0,  10 ),
+			//	new THREE.Vector3( -0.75, 0, -10 ),
+			//	new THREE.Vector3( 	0.75, 0, -10 ),
+			//	new THREE.Vector3(  0.75, 0, -10 ),
+			//	new THREE.Vector3(  0.75, 0,  10 ),
+			//	new THREE.Vector3( -0.75, 0,  10 )
+			//);
+			//geometry.faces.push( new THREE.Face3( 0, 1, 2) );
+			//geometry.faces.push( new THREE.Face3( 3, 4, 5) );
+			
+			geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10);//Vertice 0
+			geometry.vertices.push(new THREE.Vector3( 0.75, 0,  10);//Vertice 1
+			geometry.vertices.push(new THREE.Vector3( 0.75, 0, -10);//Vertice 2
+			
+			geometry.faces.push(new THREE.Face3( 0, 1, 2) );
+			
+			geometry.vertices.push(new THREE.Vector3( 0.75, 0, -10);//Vertice 3
+			geometry.vertices.push(new THREE.Vector3(-0.75, 0, -10);//Vertice 4
+			geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10);//Vertice 5
+			
+			geometry.faces.push(new THREE.Face3( 3, 4, 5) );
 			
 			geometry.computeBoundingSphere();
 
 			var material = new THREE.MeshBasicMaterial({color: 0xCCCCCC, side: THREE.Doubleside});
 			var golv = new THREE.Mesh(geometry, material);
-			var golv2 = new THREE.Mesh(geometry2, material);
+			//var golv2 = new THREE.Mesh(geometry2, material);
 			scene.add(golv);
-			scene.add(golv2);
+			//scene.add(golv2);
 
 			camera.position.z = 15;
 			camera.position.x = 0;
