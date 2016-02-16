@@ -15,8 +15,16 @@ geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10));//Vertice 3
 		
 geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
+
+var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
+
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 4, 4 );
+
 			
-var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
+//var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
+var material = new THREE.MeshBasicMaterial( { map: texture});
 var floor = new THREE.Mesh(geometry, material); 
 scene.add(floor); 
 
@@ -24,10 +32,10 @@ scene.add(floor);
 var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
 
 // load a texture, set wrap mode to repeat
-var texture = new THREE.TextureLoader().load( ".../lane.jpg " );
-texture.wrapS = THREE.RepeatWrapping;
-texture.wrapT = THREE.RepeatWrapping;
-texture.repeat.set( 4, 4 );
+//var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
+//texture.wrapS = THREE.RepeatWrapping;
+//texture.wrapT = THREE.RepeatWrapping;
+//texture.repeat.set( 4, 4 );
 
 
 //var map = new THREE.TextureLoader().load( '/Users/madeleinerapp/Desktop/fortrollande_skog_large.jpg ' );
