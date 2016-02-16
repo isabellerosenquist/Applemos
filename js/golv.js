@@ -30,6 +30,6 @@ cylinder.translateY(0);
 
 scene.add( cylinder );
 
-camera.position.z = 15; 
+camera.position.z = 12; 
 camera.position.y = 1.5; 
 renderer.render(scene, camera);
