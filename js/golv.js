@@ -25,7 +25,8 @@ var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
 var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
-cylinder.translateY(5);
+cylinder.translateY(0);
+
 
 
 scene.add( cylinder );
