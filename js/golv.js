@@ -21,7 +21,7 @@ var floor = new THREE.Mesh(geometry, material);
 scene.add(floor); 
 
 //KÄGLA
-var geometry2= new THREE.CylinderGeometry( 2, 2, 3, 5 );
+var geometry2= new THREE.CylinderGeometry( 2, 2, 4, 5 );
 var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
