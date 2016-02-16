@@ -24,7 +24,7 @@ scene.add(floor);
 var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
 
 // load a texture, set wrap mode to repeat
-var texture = new THREE.TextureLoader().load( "image/lane.jpg " );
+var texture = new THREE.TextureLoader().load( ".../lane.jpg " );
 texture.wrapS = THREE.RepeatWrapping;
 texture.wrapT = THREE.RepeatWrapping;
 texture.repeat.set( 4, 4 );
