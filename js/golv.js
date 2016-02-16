@@ -22,15 +22,30 @@ scene.add(floor);
 
 //KÄGLA
 var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
+
+// load a texture, set wrap mode to repeat
+var texture = new THREE.TextureLoader().load( "/Users/madeleinerapp/Desktop/fortrollande_skog_large.jpg " );
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 4, 4 );
+
+
+//var map = new THREE.TextureLoader().load( '/Users/madeleinerapp/Desktop/fortrollande_skog_large.jpg ' );
+//map.wrapS = map.wrapT = THREE.RepeatWrapping;
+//map.anisotropy = 16;
+
+
 var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
-cylinder.translateY(0);
+cylinder.translateY(2);
 
 
 
 scene.add( cylinder );
 
 camera.position.z = 15; 
-camera.position.y = 1.5; 
+camera.position.y = 1.5;
+camera.position.x = 2;
+
 renderer.render(scene, camera);
