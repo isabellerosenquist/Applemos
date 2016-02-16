@@ -21,7 +21,6 @@ var floor = new THREE.Mesh(geometry, material);
 scene.add(floor); 
 
 //KÄGLA
-<<<<<<< HEAD
 var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
 
 // load a texture, set wrap mode to repeat
@@ -36,7 +35,6 @@ texture.repeat.set( 4, 4 );
 //map.anisotropy = 16;
 
 
->>>>>>> 199c652ca347ae17de134c7b5e9e7d57e7894b36
 var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
@@ -45,9 +43,7 @@ cylinder.translateY(2);
 
 scene.add( cylinder );
 
-<<<<<<< HEAD
 camera.position.z = 15; 
 camera.position.y = 1.5;
 camera.position.x = 2;
->>>>>>> 199c652ca347ae17de134c7b5e9e7d57e7894b36
 renderer.render(scene, camera);
