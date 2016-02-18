@@ -51,13 +51,11 @@ cylinder.translateZ(-5);
 cylinder.translateY(1);
 scene.add( cylinder );
 
-var geometry3 = new THREE.SphereGeometry(1, 6, 6);
-var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
+//new geometry3 = new THREE.SphereGeometry(1, 3, 2);
+//new material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
-var sphere = new THREE.Mesh(geometry3, material3);
-sphere.translateZ(9);
-sphere.translateY(1);
-scene.add(sphere);
+//var sphere = new THREE.Mesh(geometry3, material3);
+//scene.add(sphere);
 
 
 camera.position.z = 15; 
