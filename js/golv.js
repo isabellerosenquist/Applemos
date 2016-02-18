@@ -15,7 +15,7 @@ geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10));//Vertice 3
 		
 geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
-
+//HEJ GITHUB FUNKAR,,,, kanske.
 //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
 //var texture = new THREE.ImageUtils.loadTexture("C:\Users\isabelle\Documents\MoS\js\lane.jpg");
 
