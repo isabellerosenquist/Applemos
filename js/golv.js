@@ -49,9 +49,14 @@ var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
 cylinder.translateY(1);
-
-
 scene.add( cylinder );
+
+//new geometry3 = new THREE.SphereGeometry(1, 3, 2);
+//new material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
+
+//var sphere = new THREE.Mesh(geometry3, material3);
+//scene.add(sphere);
+
 
 camera.position.z = 15; 
 camera.position.y = 1.5;
