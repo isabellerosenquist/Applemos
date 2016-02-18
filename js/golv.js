@@ -17,24 +17,21 @@ geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
 
 //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
-var texture = new THREE.ImageUtils.loadTexture('./lane.jpg');
+//var texture = new THREE.ImageUtils.loadTexture("C:\Users\isabelle\Documents\MoS\js\lane.jpg");
 
 //texture.wrapS = THREE.RepeatWrapping;
 //texture.wrapT = THREE.RepeatWrapping;
 //texture.repeat.set( 4, 4 );
 
 			
-//var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
-var material = new THREE.MeshBasicMaterial({ 
-		map: texture,
-		side:THREE.DoubleSide
-});
+var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
+//var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
 //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
 var floor = new THREE.Mesh(geometry, material); 
 scene.add(floor); 
 
 //KÄGLA
-var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
+var geometry2= new THREE.CylinderGeometry( 0.25, 0.5, 2, 35 );
 
 // load a texture, set wrap mode to repeat
 //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
@@ -51,7 +48,7 @@ var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
 var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
-cylinder.translateY(2);
+cylinder.translateY(1);
 
 
 scene.add( cylinder );
