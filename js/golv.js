@@ -16,12 +16,12 @@ geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10));//Vertice 3
 geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
 
-var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
-//var texture = new THREE.ImageUtils.loadTexture("lane.jpg");
+//var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
+var texture = new THREE.ImageUtils.loadTexture('./lane.jpg');
 
-texture.wrapS = THREE.RepeatWrapping;
-texture.wrapT = THREE.RepeatWrapping;
-texture.repeat.set( 4, 4 );
+//texture.wrapS = THREE.RepeatWrapping;
+//texture.wrapT = THREE.RepeatWrapping;
+//texture.repeat.set( 4, 4 );
 
 			
 //var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
