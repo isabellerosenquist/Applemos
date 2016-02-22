@@ -59,8 +59,20 @@ sphere.translateZ(9);
 sphere.translateY(1);
 scene.add(sphere);
 
-
 camera.position.z = 15; 
 camera.position.y = 1.5;
 camera.position.x = 2;
+
+// document.addEventListener("keydown", onDocumentKeyDown, false);
+
+// function onDocumentKeydown(event){
+
+// var keyCode = event.which;
+
+// var count = 1;
+
+// if(keyCode == 32);
+	// count++;
+// };
+
 renderer.render(scene, camera);
