@@ -9,8 +9,7 @@ animate();
 
 
 function init(){
-    // get the DOM element to attach to
-    // - assume we've got jQuery to hand ????? 
+
     var $container = $('#container');
 
     renderer = new THREE.WebGLRenderer();
@@ -18,11 +17,6 @@ function init(){
         document.body.appendChild( renderer.domElement );
     camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000); 
     scene = new THREE.Scene(); 
-
-    //scene.add(camera);
-
-
-
 
     //BANA -------------------------
     var geometry = new THREE.Geometry(); 
@@ -37,10 +31,7 @@ function init(){
     geometry.faces.push(new THREE.Face3( 2, 0, 3));
 
 
-
     kuben();
-
-
 
     //HEJ GITHUB FUNKAR,,,, kanske.
     //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
@@ -156,8 +147,7 @@ camera.position.x = 0;
 
 
 function kuben(){
-
-    var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
+   var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
 
 
     var kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
