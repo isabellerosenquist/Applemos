@@ -25,28 +25,6 @@ function init(){
 
 
 
-// ------------ sfärtest
-
-// create a new mesh with
-// sphere geometry - we will cover
-// the sphereMaterial next!
-var sphere1Material = new THREE.MeshLambertMaterial({ color: 0xffff00 });
-var sphere1 = new THREE.Mesh( new THREE.SphereGeometry( 50, 16, 16), sphere1Material);
-
-// add the sphere to the scene
-scene.add(sphere1);
-
-
-// set the geometry to dynamic
-// so that it allow updates
-sphere1.geometry.dynamic = true;
-
-// changes to the vertices
-sphere1.geometry.verticesNeedUpdate = true;
-
-// changes to the normals
-sphere1.geometry.normalsNeedUpdate = true;
-
 
 
 // --------------
@@ -123,6 +101,30 @@ sphere1.geometry.normalsNeedUpdate = true;
     var vagg = new THREE.Mesh(geometry4, material4);
     vagg.translateY(90);
 
+<<<<<<< HEAD
+=======
+//Andra väggar
+var geometry5 = new THREE.Geometry();
+
+geometry5.vertices.push(new THREE.Vector3(-125,   0, 0));//Vertice 0
+geometry5.vertices.push(new THREE.Vector3(-125, 180, 0));//Vertice 1
+geometry5.vertices.push(new THREE.Vector3(-125, 180, 200));//Vertice 2
+geometry5.vertices.push(new THREE.Vector3(-125,   0, 200));//Vertice 
+
+geometry5.faces.push(new THREE.Face3( 0, 1, 2));
+geometry5.faces.push(new THREE.Face3( 0, 2, 3));
+
+var material5 = new THREE.MeshBasicMaterial({color: 0x66ff00}); 
+
+var vagg2 = new THREE.Mesh(geometry5, material5); 
+scene.add(vagg2); 
+
+
+//KAMERA POSITION
+camera.position.z = 120; 
+camera.position.y = 12;
+camera.position.x = 0;
+>>>>>>> 93362bd0c09b47c75d7c3d13d4cb33249506ce47
 
     scene.add(vagg);
 
@@ -156,6 +158,37 @@ sphere1.geometry.normalsNeedUpdate = true;
 
 
  /// ----------------------------- FUNCTIONS----------------------------------
+
+
+function sfar(){
+
+
+// ------------ sfärtest
+
+// create a new mesh with
+// sphere geometry - we will cover
+// the sphereMaterial next!
+var sphere1Material = new THREE.MeshLambertMaterial({ color: 0xffff00 });
+var sphere1 = new THREE.Mesh( new THREE.SphereGeometry( 50, 16, 16), sphere1Material);
+
+// add the sphere to the scene
+scene.add(sphere1);
+
+
+// set the geometry to dynamic
+// so that it allow updates
+sphere1.geometry.dynamic = true;
+
+// changes to the vertices
+sphere1.geometry.verticesNeedUpdate = true;
+
+// changes to the normals
+sphere1.geometry.normalsNeedUpdate = true;
+
+}
+
+
+
 function kuben(){
 
     var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
