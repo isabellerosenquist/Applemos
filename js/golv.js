@@ -137,6 +137,23 @@ cylinder_mesh2.translateX(8.75);
 
 scene.add(cylinder_mesh2);
 
+//GOLV MELLAN RÄNNOR
+
+var geometry8 = new THREE.Geometry();
+
+geometry8.vertices.push(new THREE.Vector3(-10, 0,  100));//Vertice 0
+geometry8.vertices.push(new THREE.Vector3(-10, 0, -100));//Vertice 1
+geometry8.vertices.push(new THREE.Vector3(-12, 0, -100));//Vertice 2
+geometry8.vertices.push(new THREE.Vector3(-12, 0,  100));//Vertice 
+
+geometry8.faces.push(new THREE.Face3( 1, 2, 0));
+geometry8.faces.push(new THREE.Face3( 3, 0, 2));
+
+var material8 = new THREE.MeshBasicMaterial({color: 0xccffff}); 
+var golv_mesh = new THREE.Mesh(geometry8, material8);
+
+scene.add(golv_mesh);
+
 
 //KAMERA POSITION
 camera.position.z = 120; 
