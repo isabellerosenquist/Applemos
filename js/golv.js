@@ -63,16 +63,6 @@ scene.add( cylinder );
 var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
 var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
-//<<<<<<< HEAD
-scene.add( cylinder);
-
-
-camera.position.z = 15; 
-camera.position.y = 1.5;
-camera.position.x = 2;
-
-
-//=======
 var sphere = new THREE.Mesh(geometry3, material3);
 sphere.translateZ(9);
 sphere.translateY(1);
@@ -94,7 +84,6 @@ camera.position.x = 20;
 	// count++;
 // };
 
-//>>>>>>> 5c22137644812b94f06d3c7c4041627a40e27b4a
 renderer.render(scene, camera);
 
 }
