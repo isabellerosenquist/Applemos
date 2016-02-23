@@ -154,6 +154,20 @@ var golv_mesh = new THREE.Mesh(geometry8, material8);
 
 scene.add(golv_mesh);
 
+var geometry9 = new THREE.Geometry();
+
+geometry9.vertices.push(new THREE.Vector3(12, 0, -100));//Vertice 0
+geometry9.vertices.push(new THREE.Vector3(10, 0, -100));//Vertice 1
+geometry9.vertices.push(new THREE.Vector3(10, 0,  100));//Vertice 2
+geometry9.vertices.push(new THREE.Vector3(12, 0,  100));//Vertice 
+
+geometry9.faces.push(new THREE.Face3( 1, 2, 0));
+geometry9.faces.push(new THREE.Face3( 3, 0, 2));
+
+var golv_mesh2 = new THREE.Mesh(geometry9, material8);
+
+scene.add(golv_mesh2);
+
 
 //KAMERA POSITION
 camera.position.z = 120; 
