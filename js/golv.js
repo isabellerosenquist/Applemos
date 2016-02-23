@@ -88,10 +88,10 @@ scene.add( cylinder );
 var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
 var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
-var sphere = new THREE.Mesh(geometry3, material3);
-sphere.translateZ(9);
-sphere.translateY(1);
-scene.add(sphere);
+var KLOT = new THREE.Mesh(geometry3, material3);
+KLOT.translateZ(9);
+KLOT.translateY(1);
+KLOT.add(sphere);
 
 //KAMERA POSITION
 camera.position.z = 110; 
