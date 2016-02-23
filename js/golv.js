@@ -1,14 +1,20 @@
 var scene; 
 var camera; 
 var renderer;
+var mesh;
+
 
 init();
+animate();
+
 
 function init(){
 
 scene = new THREE.Scene(); 
 camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000); 
 renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); 
@@ -16,6 +22,8 @@ document.body.appendChild(renderer.domElement);
 
 //BANA -------------------------
 var geometry = new THREE.Geometry(); 
+var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
+
 
 geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
 geometry.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
@@ -24,6 +32,13 @@ geometry.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
 		
 geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
+
+
+mesh = new THREE.Mesh(geometry, material ); // tillhör kuben 
+mesh.position.z = -50;
+scene.add( mesh );
+
+
 //HEJ GITHUB FUNKAR,,,, kanske.
 //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
 //var texture = new THREE.ImageUtils.loadTexture("C:\Users\isabelle\Documents\MoS\js\lane.jpg");
@@ -84,11 +99,42 @@ camera.position.x = 20;
 	// count++;
 // };
 
+window.addEventListener( 'resize', onWindowResize, false );
+
+
 renderer.render(scene, camera);
 
 }
 
-/*
+
+
+
+
+function animate() {
+    mesh.rotation.x += .04;
+    mesh.rotation.y += .02;
+  
+    render();
+    requestAnimationFrame( animate );
+}
+  
+function render() {
+    renderer.render( scene, camera );
+}
+  
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    render();
+}
+
+
+
+
+
+
+/*-------------------------------
 	
 var camera;
 var scene;
