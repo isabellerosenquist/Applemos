@@ -95,6 +95,23 @@ vagg.translateY(90);
 
 scene.add(vagg);
 
+//Andra väggar
+var geometry5 = new THREE.Geometry();
+
+geometry5.vertices.push(new THREE.Vector3(-125,   0, 0));//Vertice 0
+geometry5.vertices.push(new THREE.Vector3(-125, 180, 0));//Vertice 1
+geometry5.vertices.push(new THREE.Vector3(-125, 180, 200));//Vertice 2
+geometry5.vertices.push(new THREE.Vector3(-125,   0, 200));//Vertice 
+
+geometry5.faces.push(new THREE.Face3( 0, 1, 2));
+geometry5.faces.push(new THREE.Face3( 0, 2, 3));
+
+var material5 = new THREE.MeshBasicMaterial({color: 0x66ff00}); 
+
+var vagg2 = new THREE.Mesh(geometry5, material5); 
+scene.add(vagg2); 
+
+
 //KAMERA POSITION
 camera.position.z = 120; 
 camera.position.y = 12;
