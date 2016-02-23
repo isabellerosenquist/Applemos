@@ -116,7 +116,7 @@ geometry6.faces.push(new THREE.Face3( 3, 0, 2));
 var vagg3 = new THREE.Mesh(geometry6, material5); 
 scene.add(vagg3); 
 
-//RÄNNA 
+//RÄNNOR 
 
 var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
 var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
@@ -124,9 +124,18 @@ var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
 var cylinder_mesh = new THREE.Mesh(long_cylinder, material7);
 
 cylinder_mesh.rotation.x = Math.PI /2;
-
+cylinder_mesh.translateX(-8.75);
 
 scene.add(cylinder_mesh);
+
+var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+var cylinder_mesh2 = new THREE.Mesh(long_cylinder, material7);
+
+cylinder_mesh2.rotation.x = Math.PI /2;
+cylinder_mesh2.translateX(8.75);
+
+scene.add(cylinder_mesh2);
 
 
 //KAMERA POSITION
