@@ -51,7 +51,7 @@ cylinder.translateZ(-5);
 cylinder.translateY(1);
 scene.add( cylinder );
 
-var geometry3 = new THREE.SphereGeometry(1, 5, 5);
+var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
 var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
 var sphere = new THREE.Mesh(geometry3, material3);
@@ -59,9 +59,9 @@ sphere.translateZ(9);
 sphere.translateY(1);
 scene.add(sphere);
 
-camera.position.z = 15; 
-camera.position.y = 1.5;
-camera.position.x = 2;
+camera.position.z = 110; 
+camera.position.y = 15;
+camera.position.x = 20;
 
 // document.addEventListener("keydown", onDocumentKeyDown, false);
 
