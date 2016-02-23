@@ -60,6 +60,7 @@ cylinder.translateZ(-5);
 cylinder.translateY(1);
 scene.add( cylinder );
 
+//KLOT
 var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
 var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
@@ -68,6 +69,7 @@ sphere.translateZ(9);
 sphere.translateY(1);
 scene.add(sphere);
 
+//KAMERA POSITION
 camera.position.z = 110; 
 camera.position.y = 15;
 camera.position.x = 20;
