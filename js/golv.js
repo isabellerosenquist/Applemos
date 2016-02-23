@@ -118,7 +118,16 @@ scene.add(vagg3);
 
 //RÄNNA 
 
-//var long_cylinder = new THREE.CylinderGeometry(1.25, );
+var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
+var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+
+var cylinder_mesh = new THREE.Mesh(long_cylinder, material7);
+
+cylinder_mesh.rotation.x = Math.PI /2;
+
+
+scene.add(cylinder_mesh);
+
 
 //KAMERA POSITION
 camera.position.z = 120; 
