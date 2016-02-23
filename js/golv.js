@@ -85,18 +85,18 @@ cylinder.translateY(1);
 scene.add( cylinder );
 
 //KLOT
-var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
+var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
 var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
 var sphere = new THREE.Mesh(geometry3, material3);
 sphere.translateZ(90);
-sphere.translateY(10.9);
+sphere.translateY(1.09);
 scene.add(sphere);
 
 //KAMERA POSITION
-camera.position.z = 150; 
-camera.position.y = 20;
-camera.position.x = 30;
+camera.position.z = 120; 
+camera.position.y = 10;
+camera.position.x = 0;
 
 // document.addEventListener("keydown", onDocumentKeyDown, false);
 
