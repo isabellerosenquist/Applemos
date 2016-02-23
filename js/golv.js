@@ -89,14 +89,14 @@ var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
 var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
 var sphere = new THREE.Mesh(geometry3, material3);
-sphere.translateZ(9);
-sphere.translateY(1);
+sphere.translateZ(90);
+sphere.translateY(10.9);
 scene.add(sphere);
 
 //KAMERA POSITION
-camera.position.z = 110; 
-camera.position.y = 15;
-camera.position.x = 20;
+camera.position.z = 150; 
+camera.position.y = 20;
+camera.position.x = 30;
 
 // document.addEventListener("keydown", onDocumentKeyDown, false);
 
