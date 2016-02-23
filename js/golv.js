@@ -18,17 +18,6 @@ renderer = new THREE.WebGLRenderer();
     document.body.appendChild( renderer.domElement );
 
 
-// kub---
-var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
-//var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
-var kMaterial = new THREE.MeshBasicMaterial({color: 0x66FF00}); 
-
-
-mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
-mesh.position.z = 50;
-scene.add( mesh );
-
-//------
 
 
 
@@ -45,6 +34,7 @@ geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
 
 
+kuben();
 
 
 
@@ -130,7 +120,20 @@ render();
 
 
 
+function kuben(){
 
+// kub---
+var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
+//var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
+var kMaterial = new THREE.MeshBasicMaterial({color: 0x66FF00}); 
+
+
+mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
+mesh.position.z = 50;
+scene.add( mesh );
+
+//------
+}
 
 function animate() {
     mesh.rotation.x += .04;
