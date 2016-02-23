@@ -93,6 +93,17 @@ sphere.translateZ(90);
 sphere.translateY(1.09);
 scene.add(sphere);
 
+//VÄGG
+
+var geometry4 = new THREE.PlaneGeometry(200, 100, 5);
+var material4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
+
+var vagg = new THREE.Mesh(geometry4, material4);
+vagg.translateY(50);
+
+
+scene.add(vagg);
+
 //KAMERA POSITION
 camera.position.z = 120; 
 camera.position.y = 10;
