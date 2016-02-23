@@ -8,10 +8,10 @@ document.body.appendChild(renderer.domElement);
 //BANA
 var geometry = new THREE.Geometry(); 
 
-geometry.vertices.push(new THREE.Vector3(-0.75, 0, -10));//Vertice 0
-geometry.vertices.push(new THREE.Vector3( 0.75, 0, -10));//Vertice 1
-geometry.vertices.push(new THREE.Vector3( 0.75, 0,  10));//Vertice 2
-geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10));//Vertice 3
+geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
+geometry.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
+geometry.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
+geometry.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
 		
 geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
