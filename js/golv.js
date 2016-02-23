@@ -86,11 +86,11 @@ scene.add(sphere);
 
 //VÄGG
 
-var geometry4 = new THREE.PlaneGeometry(250, 100, 5);
+var geometry4 = new THREE.PlaneGeometry(250, 180, 5);
 var material4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
 
 var vagg = new THREE.Mesh(geometry4, material4);
-vagg.translateY(50);
+vagg.translateY(90);
 
 
 scene.add(vagg);
