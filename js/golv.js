@@ -116,7 +116,9 @@ geometry6.faces.push(new THREE.Face3( 3, 0, 2));
 var vagg3 = new THREE.Mesh(geometry6, material5); 
 scene.add(vagg3); 
 
+//RÄNNA 
 
+//var long_cylinder = new THREE.CylinderGeometry(1.25, );
 
 //KAMERA POSITION
 camera.position.z = 120; 
