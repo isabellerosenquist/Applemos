@@ -107,10 +107,24 @@ geometry5.vertices.push(new THREE.Vector3(-125,   0, 200));//Vertice
 geometry5.faces.push(new THREE.Face3( 0, 1, 2));
 geometry5.faces.push(new THREE.Face3( 0, 2, 3));
 
-var material5 = new THREE.MeshBasicMaterial({color: 0x66ff00}); 
+var material5 = new THREE.MeshBasicMaterial({color: 0xcc00cc}); 
 
 var vagg2 = new THREE.Mesh(geometry5, material5); 
 scene.add(vagg2); 
+
+var geometry6 = new THREE.Geometry();
+
+geometry6.vertices.push(new THREE.Vector3(125,   0, 200));//Vertice 0
+geometry6.vertices.push(new THREE.Vector3(125, 180, 200));//Vertice 1
+geometry6.vertices.push(new THREE.Vector3(125, 180,   0));//Vertice 2
+geometry6.vertices.push(new THREE.Vector3(125,   0,   0));//Vertice 
+
+geometry6.faces.push(new THREE.Face3( 1, 2, 0));
+geometry6.faces.push(new THREE.Face3( 3, 0, 2));
+
+var vagg3 = new THREE.Mesh(geometry6, material5); 
+scene.add(vagg3); 
+
 
 
 //KAMERA POSITION
