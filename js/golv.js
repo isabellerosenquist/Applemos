@@ -34,6 +34,7 @@ geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
 
 
+
 kuben();
 
 
@@ -119,20 +120,16 @@ render();
 }
 
 
-
+ /// ----------------------------- FUNCTIONS----------------------------------
 function kuben(){
 
-// kub---
-var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
-//var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
-var kMaterial = new THREE.MeshBasicMaterial({color: 0x66FF00}); 
+    var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
+    //var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
+    var kMaterial = new THREE.MeshBasicMaterial({color: 0x66FF00}); 
+    mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
 
-
-mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
-mesh.position.z = 50;
-scene.add( mesh );
-
-//------
+    mesh.position.z = 50;
+    scene.add( mesh );
 }
 
 function animate() {
@@ -156,65 +153,3 @@ function onWindowResize() {
 }
 
 
-
-
-
-
-/*-------------------------------
-	
-var camera;
-var scene;
-var renderer;
-var mesh;
-  
-init();
-animate();
-  
-function init() {
-  
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000);
-  
-    var light = new THREE.DirectionalLight( 0xffffff );
-    light.position.set( 0, 1, 1 ).normalize();
-    scene.add(light);
-  
-    var geometry = new THREE.CubeGeometry( 10, 10, 10);
-    var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } );
-     
-    // Denna istälelt för den ovan ska generera en bild som textur men bilden vill inte hittas
-	//var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/crate.jpg') } );  
-
-
-    mesh = new THREE.Mesh(geometry, material );
-    mesh.position.z = -50;
-    scene.add( mesh );
-  
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
-  
-    window.addEventListener( 'resize', onWindowResize, false );
-  
-    render();
-}
-  
-function animate() {
-    mesh.rotation.x += .04;
-    mesh.rotation.y += .02;
-  
-    render();
-    requestAnimationFrame( animate );
-}
-  
-function render() {
-    renderer.render( scene, camera );
-}
-  
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    render();
-}
-*/
