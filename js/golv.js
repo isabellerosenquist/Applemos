@@ -4,6 +4,7 @@ var renderer;
 var mesh;
 
 
+
 init();
 animate();
 
@@ -16,13 +17,23 @@ renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
 
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement); 
-//var geometry = new THREE.BoxGeometry(1,1,1);
+
+// kub---
+var kGeometry = new THREE.CubeGeometry( 10, 10, 10);
+//var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
+var kMaterial = new THREE.MeshBasicMaterial({color: 0x66FF00}); 
+
+
+mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
+mesh.position.z = -50;
+scene.add( mesh );
+
+//------
+
+
 
 //BANA -------------------------
 var geometry = new THREE.Geometry(); 
-var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } ); // kub
 
 
 geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
@@ -34,9 +45,7 @@ geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
 
 
-mesh = new THREE.Mesh(geometry, material ); // tillhör kuben 
-mesh.position.z = -50;
-scene.add( mesh );
+
 
 
 //HEJ GITHUB FUNKAR,,,, kanske.
@@ -104,7 +113,7 @@ camera.position.x = 20;
 window.addEventListener( 'resize', onWindowResize, false );
 
 
-renderer.render(scene, camera);
+render();
 
 }
 
