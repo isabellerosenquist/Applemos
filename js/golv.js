@@ -17,30 +17,53 @@ document.body.appendChild(renderer.domElement);
 //BANA -------------------------
 var geometry = new THREE.Geometry(); 
 
-geometry.vertices.push(new THREE.Vector3(-0.75, 0, -10));//Vertice 0
-geometry.vertices.push(new THREE.Vector3( 0.75, 0, -10));//Vertice 1
-geometry.vertices.push(new THREE.Vector3( 0.75, 0,  10));//Vertice 2
-geometry.vertices.push(new THREE.Vector3(-0.75, 0,  10));//Vertice 3
+geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
+geometry.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
+geometry.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
+geometry.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
 		
 geometry.faces.push(new THREE.Face3( 1, 0, 2));
 geometry.faces.push(new THREE.Face3( 2, 0, 3));
+//HEJ GITHUB FUNKAR,,,, kanske.
+//var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
+//var texture = new THREE.ImageUtils.loadTexture("C:\Users\isabelle\Documents\MoS\js\lane.jpg");
+
+//texture.wrapS = THREE.RepeatWrapping;
+//texture.wrapT = THREE.RepeatWrapping;
+//texture.repeat.set( 4, 4 );
+
 			
 var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
-//var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } );
-//var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/trad.jpg') } );
+
+//var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
+//var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
 var floor = new THREE.Mesh(geometry, material); 
 scene.add(floor); 
 
-//KÄGLA -------------------------
-var geometry2= new THREE.CylinderGeometry( 2, 2, 5, 5 );
+//KÄGLA
+var geometry2= new THREE.CylinderGeometry( 0.25, 0.5, 2, 35 );
 
+// load a texture, set wrap mode to repeat
+//var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
+//texture.wrapS = THREE.RepeatWrapping;
+//texture.wrapT = THREE.RepeatWrapping;
+//texture.repeat.set( 4, 4 );
+
+
+//var map = new THREE.TextureLoader().load( '/Users/madeleinerapp/Desktop/fortrollande_skog_large.jpg ' );
+//map.wrapS = map.wrapT = THREE.RepeatWrapping;
+//map.anisotropy = 16;
 
 var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
 var cylinder = new THREE.Mesh( geometry2, material2 );
 cylinder.translateZ(-5);
-cylinder.translateY(2);
+cylinder.translateY(1);
+scene.add( cylinder );
 
+var geometry3 = new THREE.SphereGeometry(10.9, 15, 15);
+var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
+//<<<<<<< HEAD
 scene.add( cylinder);
 
 
@@ -49,6 +72,29 @@ camera.position.y = 1.5;
 camera.position.x = 2;
 
 
+//=======
+var sphere = new THREE.Mesh(geometry3, material3);
+sphere.translateZ(9);
+sphere.translateY(1);
+scene.add(sphere);
+
+camera.position.z = 110; 
+camera.position.y = 15;
+camera.position.x = 20;
+
+// document.addEventListener("keydown", onDocumentKeyDown, false);
+
+// function onDocumentKeydown(event){
+
+// var keyCode = event.which;
+
+// var count = 1;
+
+// if(keyCode == 32);
+	// count++;
+// };
+
+//>>>>>>> 5c22137644812b94f06d3c7c4041627a40e27b4a
 renderer.render(scene, camera);
 
 }
