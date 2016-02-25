@@ -121,6 +121,57 @@ geometry6.faces.push(new THREE.Face3( 3, 0, 2));
 var vagg3 = new THREE.Mesh(geometry6, material5); 
 scene.add(vagg3); 
 
+//RÄNNOR 
+
+var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
+var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+
+var cylinder_mesh = new THREE.Mesh(long_cylinder, material7);
+
+cylinder_mesh.rotation.x = Math.PI /2;
+cylinder_mesh.translateX(-8.75);
+
+scene.add(cylinder_mesh);
+
+var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+var cylinder_mesh2 = new THREE.Mesh(long_cylinder, material7);
+
+cylinder_mesh2.rotation.x = Math.PI /2;
+cylinder_mesh2.translateX(8.75);
+
+scene.add(cylinder_mesh2);
+
+//GOLV MELLAN RÄNNOR
+
+var geometry8 = new THREE.Geometry();
+
+geometry8.vertices.push(new THREE.Vector3(-10, 0,  100));//Vertice 0
+geometry8.vertices.push(new THREE.Vector3(-10, 0, -100));//Vertice 1
+geometry8.vertices.push(new THREE.Vector3(-12, 0, -100));//Vertice 2
+geometry8.vertices.push(new THREE.Vector3(-12, 0,  100));//Vertice 
+
+geometry8.faces.push(new THREE.Face3( 1, 2, 0));
+geometry8.faces.push(new THREE.Face3( 3, 0, 2));
+
+var material8 = new THREE.MeshBasicMaterial({color: 0xccffff}); 
+var golv_mesh = new THREE.Mesh(geometry8, material8);
+
+scene.add(golv_mesh);
+
+var geometry9 = new THREE.Geometry();
+
+geometry9.vertices.push(new THREE.Vector3(12, 0, -100));//Vertice 0
+geometry9.vertices.push(new THREE.Vector3(10, 0, -100));//Vertice 1
+geometry9.vertices.push(new THREE.Vector3(10, 0,  100));//Vertice 2
+geometry9.vertices.push(new THREE.Vector3(12, 0,  100));//Vertice 
+
+geometry9.faces.push(new THREE.Face3( 1, 2, 0));
+geometry9.faces.push(new THREE.Face3( 3, 0, 2));
+
+var golv_mesh2 = new THREE.Mesh(geometry9, material8);
+
+scene.add(golv_mesh2);
 
 
 //KAMERA POSITION
