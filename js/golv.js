@@ -109,10 +109,19 @@ function init(){
 
     			
     var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
+	//var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('lane.jpg') side:THREE.DoubleSide} );
+	
+	//var meshFaceMaterial = new THREE.MeshFaceMaterial(material);
+	//mesh = new THREE.Mesh(geometry,  meshFaceMaterial);
+	
+	// geometry.computeFaceNormals();
+	// geometry.computeCentroids();
+	// geometry.computeVertexNormals();
 
     //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
     //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
     var floor = new THREE.Mesh(geometry, material); 
+	floor.doubleSided = true; 
     scene.add(floor); 
 
     //KÄGLA
