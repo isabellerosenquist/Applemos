@@ -7,7 +7,7 @@ var startTime   = Date.now();
 var r;
 var dtime;
 var a; 
-
+  var kMaterial
 init();
 animate();
 
@@ -22,8 +22,8 @@ animate();
 function kuben(){
    var kGeometry = new THREE.CubeGeometry( 10, 10, 10); // storleken på kuben
 
-
-    var kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
+// kMaterial = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
+    kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
    // var material = new THREE.MeshLambertMaterial({
      //   map: THREE.ImageUtils.loadTexture('crate.jpg')
 
@@ -37,7 +37,7 @@ function kuben(){
 
 function animate() {
     //mesh.rotation.x += .04;
-    mesh.rotation.y += .01;
+   // mesh.rotation.y += .01;
 
     render();
     requestAnimationFrame( animate );
@@ -46,7 +46,7 @@ function animate() {
 function render() {
 
 
-     dtime = 0 - (((Date.now() - startTime)/50)*a);
+    // dtime = 0 - (((Date.now() - startTime)/50)*a); // denna får den att röra på sig. FUNKAR
 
     //mesh.scale.x    = 1.0 + 0.3*Math.sin(dtime/100);
     //mesh.scale.y    = 1.0 + 0.3*Math.sin(dtime/300);
@@ -57,6 +57,8 @@ function render() {
 
 
     renderer.render( scene, camera );
+     requestAnimationFrame(render);  
+
     //mesh.rotation.set(r, 20, 5);
 
 }
@@ -67,7 +69,6 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
     render();
 }
-
 
 /// ----------------------------- MAIN----------------------------------
 function init(){  
@@ -109,19 +110,10 @@ function init(){
 
     			
     var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
-	//var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('lane.jpg') side:THREE.DoubleSide} );
-	
-	//var meshFaceMaterial = new THREE.MeshFaceMaterial(material);
-	//mesh = new THREE.Mesh(geometry,  meshFaceMaterial);
-	
-	// geometry.computeFaceNormals();
-	// geometry.computeCentroids();
-	// geometry.computeVertexNormals();
 
     //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
     //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
     var floor = new THREE.Mesh(geometry, material); 
-	floor.doubleSided = true; 
     scene.add(floor); 
 	
 	
@@ -180,6 +172,8 @@ function init(){
     //KLOT
     var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
     var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
+    // material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
+
 
     var KLOT = new THREE.Mesh(geometry3, material3);
     KLOT.translateZ(90);
