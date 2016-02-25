@@ -78,10 +78,10 @@ function init(){
     var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
     var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
 
-    var sphere = new THREE.Mesh(geometry3, material3);
-    sphere.translateZ(90);
-    sphere.translateY(1.09);
-    scene.add(sphere);
+    var KLOT = new THREE.Mesh(geometry3, material3);
+    KLOT.translateZ(90);
+    KLOT.translateY(1.09);
+    scene.add(KLOT);
 
     //VÄGG
 
