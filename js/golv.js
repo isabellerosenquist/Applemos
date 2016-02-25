@@ -203,6 +203,7 @@ cylinder_mesh.translateX(-8.75);
 
 scene.add(cylinder_mesh);
 
+
 var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
 var cylinder_mesh2 = new THREE.Mesh(long_cylinder, material7);
@@ -212,8 +213,8 @@ cylinder_mesh2.translateX(8.75);
 
 scene.add(cylinder_mesh2);
 
-var long_cylinder3 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
+var long_cylinder3 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
 var cylinder_mesh3 = new THREE.Mesh(long_cylinder3, material7);
 
@@ -221,6 +222,16 @@ cylinder_mesh3.rotation.x = Math.PI /2;
 cylinder_mesh3.translateX(-13.25);
 
 scene.add(cylinder_mesh3);
+
+
+var long_cylinder4 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+var cylinder_mesh4 = new THREE.Mesh(long_cylinder4, material7);
+
+cylinder_mesh4.rotation.x = Math.PI /2;
+cylinder_mesh4.translateX(13.25);
+
+scene.add(cylinder_mesh4);
 
 
 
