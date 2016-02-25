@@ -212,6 +212,18 @@ cylinder_mesh2.translateX(8.75);
 
 scene.add(cylinder_mesh2);
 
+var long_cylinder3 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+
+var cylinder_mesh3 = new THREE.Mesh(long_cylinder3, material7);
+
+cylinder_mesh3.rotation.x = Math.PI /2;
+cylinder_mesh3.translateX(-13.25);
+
+scene.add(cylinder_mesh3);
+
+
+
 //GOLV MELLAN RÄNNOR
 
 var geometry8 = new THREE.Geometry();
