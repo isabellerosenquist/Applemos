@@ -3,12 +3,17 @@ var camera;
 var renderer;
 var mesh;
 // git add file.name && git commit -m "removed merge conflicts"
+var startTime   = Date.now();
+var r;
+var dtime;
 
 init();
 animate();
 
 
 function init(){
+    r = 1;
+    
 
     var $container = $('#container');
 
@@ -175,15 +180,26 @@ function kuben(){
 
 function animate() {
     //mesh.rotation.x += .04;
-    mesh.rotation.y += .01;
-  
+    //mesh.rotation.y += .01;
+
     render();
     requestAnimationFrame( animate );
 }
   
 function render() {
 
+
+     dtime = 100 - ((Date.now() - startTime)/10);
+
+    //mesh.scale.x    = 1.0 + 0.3*Math.sin(dtime/100);
+    //mesh.scale.y    = 1.0 + 0.3*Math.sin(dtime/300);
+    //mesh.scale.z    = 1.0 + 0.3*Math.sin(dtime/300);
+
+    mesh.position.set(1,1,dtime);
+
+
     renderer.render( scene, camera );
+    //mesh.rotation.set(r, 20, 5);
 
 }
   
