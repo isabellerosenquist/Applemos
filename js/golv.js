@@ -87,7 +87,6 @@ function init(){
     //BANA -------------------------
     var geometry = new THREE.Geometry(); 
 
-
     geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
     geometry.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
     geometry.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
@@ -95,6 +94,7 @@ function init(){
     		
     geometry.faces.push(new THREE.Face3( 1, 0, 2));
     geometry.faces.push(new THREE.Face3( 2, 0, 3));
+	
 
 
     kuben();
@@ -123,6 +123,20 @@ function init(){
     var floor = new THREE.Mesh(geometry, material); 
 	floor.doubleSided = true; 
     scene.add(floor); 
+	
+	
+	//ANDRA BANOR
+	
+	var geometry10 = new THREE.Geometry(); 
+
+
+    geometry10.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
+    geometry10.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
+    geometry10.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
+    geometry10.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
+    		
+    geometry10.faces.push(new THREE.Face3( 1, 0, 2));
+    geometry10.faces.push(new THREE.Face3( 2, 0, 3));
 
     //KÄGLA
     var geometry2= new THREE.CylinderGeometry( 0.25, 0.5, 2, 35 );
@@ -251,6 +265,7 @@ var material8 = new THREE.MeshBasicMaterial({color: 0xccffff});
 var golv_mesh = new THREE.Mesh(geometry8, material8);
 
 scene.add(golv_mesh);
+
 
 var geometry9 = new THREE.Geometry();
 
