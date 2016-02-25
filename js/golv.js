@@ -88,7 +88,6 @@ function init(){
     //BANA -------------------------
     var geometry = new THREE.Geometry(); 
 
-
     geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
     geometry.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
     geometry.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
@@ -96,6 +95,7 @@ function init(){
     		
     geometry.faces.push(new THREE.Face3( 1, 0, 2));
     geometry.faces.push(new THREE.Face3( 2, 0, 3));
+	
 
 
     kuben();
@@ -115,6 +115,20 @@ function init(){
     //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
     var floor = new THREE.Mesh(geometry, material); 
     scene.add(floor); 
+	
+	
+	//ANDRA BANOR
+	
+	var geometry10 = new THREE.Geometry(); 
+
+
+    geometry10.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
+    geometry10.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
+    geometry10.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
+    geometry10.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
+    		
+    geometry10.faces.push(new THREE.Face3( 1, 0, 2));
+    geometry10.faces.push(new THREE.Face3( 2, 0, 3));
 
     //KÄGLA
     var geometry2= new THREE.CylinderGeometry( 0.25, 0.5, 2, 35 );
@@ -197,6 +211,7 @@ cylinder_mesh.translateX(-8.75);
 
 scene.add(cylinder_mesh);
 
+
 var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
 var cylinder_mesh2 = new THREE.Mesh(long_cylinder, material7);
@@ -205,6 +220,28 @@ cylinder_mesh2.rotation.x = Math.PI /2;
 cylinder_mesh2.translateX(8.75);
 
 scene.add(cylinder_mesh2);
+
+
+var long_cylinder3 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+var cylinder_mesh3 = new THREE.Mesh(long_cylinder3, material7);
+
+cylinder_mesh3.rotation.x = Math.PI /2;
+cylinder_mesh3.translateX(-13.25);
+
+scene.add(cylinder_mesh3);
+
+
+var long_cylinder4 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+var cylinder_mesh4 = new THREE.Mesh(long_cylinder4, material7);
+
+cylinder_mesh4.rotation.x = Math.PI /2;
+cylinder_mesh4.translateX(13.25);
+
+scene.add(cylinder_mesh4);
+
+
 
 //GOLV MELLAN RÄNNOR
 
@@ -222,6 +259,7 @@ var material8 = new THREE.MeshBasicMaterial({color: 0xccffff});
 var golv_mesh = new THREE.Mesh(geometry8, material8);
 
 scene.add(golv_mesh);
+
 
 var geometry9 = new THREE.Geometry();
 
