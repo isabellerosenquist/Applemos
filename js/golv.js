@@ -129,14 +129,33 @@ function init(){
 	
 	var geometry10 = new THREE.Geometry(); 
 
-
-    geometry10.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
-    geometry10.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
-    geometry10.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
-    geometry10.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
+    geometry10.vertices.push(new THREE.Vector3(-29.5, 0, -100));//Vertice 0
+    geometry10.vertices.push(new THREE.Vector3(-14.5, 0, -100));//Vertice 1
+    geometry10.vertices.push(new THREE.Vector3(-14.5, 0,  100));//Vertice 2
+    geometry10.vertices.push(new THREE.Vector3(-29.5, 0,  100));//Vertice 3
     		
     geometry10.faces.push(new THREE.Face3( 1, 0, 2));
     geometry10.faces.push(new THREE.Face3( 2, 0, 3));
+	
+	var floor2 = new THREE.Mesh(geometry10, material); 
+	floor2.doubleSided = true; 
+    scene.add(floor2); 
+	
+	
+	var geometry11 = new THREE.Geometry(); 
+
+    geometry11.vertices.push(new THREE.Vector3(29.5, 0, -100));//Vertice 0
+    geometry11.vertices.push(new THREE.Vector3(14.5, 0, -100));//Vertice 1
+    geometry11.vertices.push(new THREE.Vector3(14.5, 0,  100));//Vertice 2
+    geometry11.vertices.push(new THREE.Vector3(29.5, 0,  100));//Vertice 3
+    		
+    geometry11.faces.push(new THREE.Face3( 1, 0, 2));
+    geometry11.faces.push(new THREE.Face3( 2, 0, 3));
+	
+	var floor3 = new THREE.Mesh(geometry11, material); 
+	floor3.doubleSided = true; 
+    scene.add(floor3); 
+	
 
     //KÄGLA
     var geometry2= new THREE.CylinderGeometry( 0.25, 0.5, 2, 35 );
