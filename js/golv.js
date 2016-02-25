@@ -6,14 +6,75 @@ var mesh;
 var startTime   = Date.now();
 var r;
 var dtime;
+var a; 
 
 init();
 animate();
 
 
-function init(){
+
+ /// ----------------------------- FUNCTIONS----------------------------------
+
+
+
+
+
+function kuben(){
+   var kGeometry = new THREE.CubeGeometry( 10, 10, 10); // storleken på kuben
+
+
+    var kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
+   // var material = new THREE.MeshLambertMaterial({
+     //   map: THREE.ImageUtils.loadTexture('crate.jpg')
+
+    mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
+
+    mesh.position.z = 50
+
+    scene.add( mesh );
+}
+
+
+function animate() {
+    //mesh.rotation.x += .04;
+    mesh.rotation.y += .01;
+
+    render();
+    requestAnimationFrame( animate );
+}
+  
+function render() {
+
+
+     dtime = 0 - (((Date.now() - startTime)/50)*a);
+
+    //mesh.scale.x    = 1.0 + 0.3*Math.sin(dtime/100);
+    //mesh.scale.y    = 1.0 + 0.3*Math.sin(dtime/300);
+    //mesh.scale.z    = 1.0 + 0.3*Math.sin(dtime/300);
+
+
+    mesh.position.set(1,1,dtime);
+
+
+    renderer.render( scene, camera );
+    //mesh.rotation.set(r, 20, 5);
+
+}
+  
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    render();
+}
+
+
+/// ----------------------------- MAIN----------------------------------
+function init(){  
+
     r = 1;
-    
+    dtime = 1;
+    a = -1;
 
     var $container = $('#container');
 
@@ -210,55 +271,5 @@ camera.position.x = 0;
 
 
 
- /// ----------------------------- FUNCTIONS----------------------------------
-
-
-
-
-
-function kuben(){
-   var kGeometry = new THREE.CubeGeometry( 10, 20, 10); // storleken på kuben
-
-
-    var kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
-
-    mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
-
-    mesh.position.z = 50;
-    scene.add( mesh );
-}
-
-
-function animate() {
-    //mesh.rotation.x += .04;
-    //mesh.rotation.y += .01;
-
-    render();
-    requestAnimationFrame( animate );
-}
-  
-function render() {
-
-
-     dtime = 100 - ((Date.now() - startTime)/10);
-
-    //mesh.scale.x    = 1.0 + 0.3*Math.sin(dtime/100);
-    //mesh.scale.y    = 1.0 + 0.3*Math.sin(dtime/300);
-    //mesh.scale.z    = 1.0 + 0.3*Math.sin(dtime/300);
-
-    mesh.position.set(1,1,dtime);
-
-
-    renderer.render( scene, camera );
-    //mesh.rotation.set(r, 20, 5);
-
-}
-  
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    render();
-}
 
 
