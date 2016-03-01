@@ -50,8 +50,13 @@ function render() {
    // mesh.position.set(1,1,dtime); // denna får den att röra på sig. FUNKAR
 
 
+<<<<<<< HEAD
      requestAnimationFrame(render);  
     renderer.render( scene, camera );
+=======
+    renderer.render( scene, camera );
+     //requestAnimationFrame(render);  
+>>>>>>> 705b57c1ca097db9aa9b66efb7161978476e68d5
 
     //mesh.rotation.set(r, 20, 5);
 
@@ -149,7 +154,9 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
 
     			
     var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
-
+	
+	//var texture = THREE.ImageUtils.loadTexture('http://thumbs.dreamstime.com/z/bowling-lane-chart-15312975.jpg', {}, function(){ renderer.render(scene, camera); } );
+	//var material = THREE.MeshFaceMaterial( {map: texture, side:THREE.DoubleSide});
     //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
    // var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg")});
     var floor = new THREE.Mesh(geometry, material); 
@@ -172,20 +179,20 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
 	floor2.doubleSided = true; 
     scene.add(floor2); 
 	
-	
+
 	var geometry11 = new THREE.Geometry(); 
 
-    geometry11.vertices.push(new THREE.Vector3(29.5, 0, -100));//Vertice 0
-    geometry11.vertices.push(new THREE.Vector3(14.5, 0, -100));//Vertice 1
-    geometry11.vertices.push(new THREE.Vector3(14.5, 0,  100));//Vertice 2
-    geometry11.vertices.push(new THREE.Vector3(29.5, 0,  100));//Vertice 3
+    geometry11.vertices.push(new THREE.Vector3(14.5, 0, -100));//Vertice 0
+    geometry11.vertices.push(new THREE.Vector3(29.5, 0, -100));//Vertice 1
+    geometry11.vertices.push(new THREE.Vector3(29.5, 0,  100));//Vertice 2
+    geometry11.vertices.push(new THREE.Vector3(14.5, 0,  100));//Vertice 3
     		
     geometry11.faces.push(new THREE.Face3( 1, 0, 2));
     geometry11.faces.push(new THREE.Face3( 2, 0, 3));
 	
 	var floor3 = new THREE.Mesh(geometry11, material); 
 	floor3.doubleSided = true; 
-    scene.add(floor3); 
+    scene.add(floor3);
 	
 
     //KÄGLA
@@ -284,10 +291,48 @@ cylinder_mesh.translateX(-8.75);
 
 scene.add(cylinder_mesh);
 
+			// var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
+			// var cylinder_mesh = new THREE.Mesh(long_cylinder);
+
+			// cylinder_mesh.rotation.x = Math.PI /2;
+			// cylinder_mesh.translateX(-8.75);
+
+			// var long_cylinder_bsp = new THREEBSP(cylinder_mesh);
+
+			// var long_plane = new THREE.PlaneGeometry(2.5, 200);
+			// var long_plane_mesh = new THREE.Mesh(long_plane);
+
+			// long_plane_mesh.rotation.x = Math.PI /2;
+			// long_plane_mesh.translateX(-8.75);
+
+			// var long_plane_bsp = new THREEBSP(long_plane_mesh);
+
+			// var subtract_bsp = long_cylinder_bsp.subtract(long_plane_bsp);
+			// var result = subtract_bsp.toMesh( new THREE.MeshBasicMaterial( {color: 0x0000ff} ));
+			// result.geometry.computeVertexNormals();
+			// scene.add(result);
+
+
+// var cube_geometry = new THREE.CubeGeometry( 3, 3, 3 );
+// var cube_mesh = new THREE.Mesh( cube_geometry );
+// cube_mesh.position.x = -7;
+// var cube_bsp = new ThreeBSP( cube_mesh );
+// var sphere_geometry = new THREE.SphereGeometry( 1.8, 32, 32 );
+// var sphere_mesh = new THREE.Mesh( sphere_geometry );
+// sphere_mesh.position.x = -7;
+// var sphere_bsp = new ThreeBSP( sphere_mesh );
+
+// var subtract_bsp = cube_bsp.subtract( sphere_bsp );
+// var result = subtract_bsp.toMesh( new THREE.MeshLambertMaterial({ shading: THREE.SmoothShading, map: THREE.ImageUtils.loadTexture('texture.png') }) );
+// result.geometry.computeVertexNormals();
+// scene.add( result );
+
+
+
 
 var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
-var cylinder_mesh2 = new THREE.Mesh(long_cylinder, material7);
+var cylinder_mesh2 = new THREE.Mesh(long_cylinder2, material7);
 
 cylinder_mesh2.rotation.x = Math.PI /2;
 cylinder_mesh2.translateX(8.75);
@@ -314,16 +359,32 @@ cylinder_mesh4.translateX(13.25);
 
 scene.add(cylinder_mesh4);
 
+var long_cylinder5 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
+var cylinder_mesh5 = new THREE.Mesh(long_cylinder5, material7);
+
+cylinder_mesh5.rotation.x = Math.PI /2;
+cylinder_mesh5.translateX(30.75);
+
+scene.add(cylinder_mesh5);
+
+var long_cylinder6 = new THREE.CylinderGeometry(1.25, 1.25, 200);
+
+var cylinder_mesh6 = new THREE.Mesh(long_cylinder6, material7);
+
+cylinder_mesh6.rotation.x = Math.PI /2;
+cylinder_mesh6.translateX(-30.75);
+
+scene.add(cylinder_mesh6);
 
 //GOLV MELLAN RÄNNOR
 
 var geometry8 = new THREE.Geometry();
 
-geometry8.vertices.push(new THREE.Vector3(-10, 0,  100));//Vertice 0
-geometry8.vertices.push(new THREE.Vector3(-10, 0, -100));//Vertice 1
-geometry8.vertices.push(new THREE.Vector3(-12, 0, -100));//Vertice 2
-geometry8.vertices.push(new THREE.Vector3(-12, 0,  100));//Vertice 
+geometry8.vertices.push(new THREE.Vector3(-10, 0, -100));//Vertice 0
+geometry8.vertices.push(new THREE.Vector3(-12, 0, -100));//Vertice 1
+geometry8.vertices.push(new THREE.Vector3(-12, 0,  100));//Vertice 2
+geometry8.vertices.push(new THREE.Vector3(-10, 0,  100));//Vertice 
 
 geometry8.faces.push(new THREE.Face3( 1, 2, 0));
 geometry8.faces.push(new THREE.Face3( 3, 0, 2));
@@ -347,6 +408,45 @@ geometry9.faces.push(new THREE.Face3( 3, 0, 2));
 var golv_mesh2 = new THREE.Mesh(geometry9, material8);
 
 scene.add(golv_mesh2);
+
+var geometry12 = new THREE.Geometry();
+
+geometry12.vertices.push(new THREE.Vector3(-32, 0, -100));//Vertice 0
+geometry12.vertices.push(new THREE.Vector3(-34, 0, -100));//Vertice 1
+geometry12.vertices.push(new THREE.Vector3(-34, 0, 100));//Vertice 2
+geometry12.vertices.push(new THREE.Vector3(-32, 0,  100));//Vertice 
+
+geometry12.faces.push(new THREE.Face3( 1, 2, 0));
+geometry12.faces.push(new THREE.Face3( 3, 0, 2));
+
+var material8 = new THREE.MeshBasicMaterial({color: 0xccffff}); 
+var golv_mesh3 = new THREE.Mesh(geometry12, material8);
+
+scene.add(golv_mesh3);
+
+//GOLV FRAMFÖR BANOR
+
+var geometry13 = new THREE.Geometry();
+
+geometry13.vertices.push(new THREE.Vector3(-125, 0, 200));//Vertice 0
+geometry13.vertices.push(new THREE.Vector3( 125, 0, 200));//Vertice 1
+geometry13.vertices.push(new THREE.Vector3( 125, 0, 100));//Vertice 2
+geometry13.vertices.push(new THREE.Vector3(-125, 0, 100));//Vertice 
+
+geometry13.faces.push(new THREE.Face3( 1, 2, 0));
+geometry13.faces.push(new THREE.Face3( 3, 0, 2));
+
+var material9 = new THREE.MeshBasicMaterial({color: 0x006600});
+var golv_mesh4 = new THREE.Mesh(geometry13, material9);
+
+scene.add(golv_mesh4);
+
+
+
+
+
+
+
 
 
 //KAMERA POSITION
