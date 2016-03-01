@@ -112,7 +112,7 @@ function init(){
     			
     var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
 	
-	//var texture = THREE.ImageUtils.loadTexture( 'lane.jpg', {}, function(){ renderer.render(scene, camera); } );
+	//var texture = THREE.ImageUtils.loadTexture('http://thumbs.dreamstime.com/z/bowling-lane-chart-15312975.jpg', {}, function(){ renderer.render(scene, camera); } );
 
     //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
     //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
