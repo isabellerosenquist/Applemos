@@ -15,11 +15,6 @@ render();
 
 
  /// ----------------------------- FUNCTIONS----------------------------------
-
-
-
-
-
 function kuben(){
    var kGeometry = new THREE.CubeGeometry( 10, 10, 10); // storleken på kuben
 
@@ -96,7 +91,6 @@ function init(){
     		
     geometry.faces.push(new THREE.Face3( 1, 0, 2));
     geometry.faces.push(new THREE.Face3( 2, 0, 3));
-	
 
 
     kuben();
@@ -199,10 +193,6 @@ function init(){
     var geometry4 = new THREE.PlaneGeometry(250, 180, 5);
     var texture4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
 
-
-
-
-
     var vagg = new THREE.Mesh(geometry4, texture4);
     vagg.translateY(90);
 
@@ -248,6 +238,8 @@ cylinder_mesh.translateX(-8.75);
 
 scene.add(cylinder_mesh);
 
+			//-----TEST FÖR ATT FÅ EN RÄNNA ISTÄLLET FÖR CYLINDER-----
+			
 			// var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
 			// var cylinder_mesh = new THREE.Mesh(long_cylinder);
 
