@@ -14,23 +14,109 @@ init();
 animate();
 render();
 
-// // https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
 
  /// ----------------------------- FUNCTIONS----------------------------------
 
 
 
 
-function kuben(){
+function bana1(){
+
+     var kGeometry = new THREE.CubeGeometry( 20, 0.1, 100); // storleken på kuben
+
+    var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane.jpg', {}, function(){ renderer.render(scene, camera); } );
+    var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
+
+    mesh = new THREE.Mesh(kGeometry, tematerial ); // tillhör kuben 
+    mesh.position.z = 50
+
+    scene.add( mesh );
+}
+
+function bana2(){
+    
+     var kGeometry = new THREE.CubeGeometry( 20, 0.1, 100); // storleken på kuben
+
+    var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane.jpg', {}, function(){ renderer.render(scene, camera); } );
+    var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
+
+    mesh = new THREE.Mesh(kGeometry, tematerial ); // tillhör kuben 
+    mesh.position.z = 50;
+    mesh.position.x = 22;
+
+    scene.add( mesh );
+}
+
+function bana3(){
+    
+     var kGeometry = new THREE.CubeGeometry( 20, 0.1, 100); // storleken på kuben
+
+    var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane.jpg', {}, function(){ renderer.render(scene, camera); } );
+    var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
+
+    mesh = new THREE.Mesh(kGeometry, tematerial ); // tillhör kuben 
+    mesh.position.z = 50;
+    mesh.position.x = -22;
+
+    scene.add( mesh );
+}
+
+function klot(){
+
+ var texture2 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ', {}, function(){ renderer.render(scene, camera); } );
+    var material3 = new THREE.MeshBasicMaterial({map: texture2})
+
+    var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
+    //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
+
+    var KLOT = new THREE.Mesh(geometry3, material3);
+    KLOT.translateZ(90);
+    KLOT.translateY(1.09);
+    scene.add(KLOT);
+}
+
+function rannor(par1){
+
+var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
 
+ var rannorTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/tex.jpg ', {}, function(){ renderer.render(scene, camera); } ); 
+ rannorTexture.repeat.set( 0.1, 1 );
+ rannorTexture.wrapS = rannorTexture.wrapT = THREE.RepeatWrapping;
 
+
+ var rannorMaterial = new THREE.MeshBasicMaterial({map: rannorTexture})
+//var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+
+var cylinder_mesh = new THREE.Mesh(long_cylinder, rannorMaterial);
+
+cylinder_mesh.rotation.x = Math.PI /2;
+cylinder_mesh.translateX(par1);
+
+scene.add(cylinder_mesh);
 
 }
 
+function golvMellenRannor(par1){
+
+var gmrGeometry = new THREE.CubeGeometry( 5, 0.5, 100); // storleken på kuben
+
+var gmrtexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/wood.jpg', {}, function(){ renderer.render(scene, camera); } );
+var gmrmaterial = new THREE.MeshBasicMaterial({map: gmrtexture})
+
+mesh = new THREE.Mesh(gmrGeometry, gmrmaterial ); // tillhör kuben 
+mesh.position.z = 50;
+mesh.position.x = par1;
+
+scene.add( mesh );
+
+}
+
+ /// -----------------------------------------------------------------------
+
 
 function animate() {
-    //mesh.rotation.x += .04;
+   // mesh.rotation.x += .04;
    // mesh.rotation.y += .01;
 
     render();
@@ -50,13 +136,8 @@ function render() {
    // mesh.position.set(1,1,dtime); // denna får den att röra på sig. FUNKAR
 
 
-<<<<<<< HEAD
      requestAnimationFrame(render);  
     renderer.render( scene, camera );
-=======
-    renderer.render( scene, camera );
-     //requestAnimationFrame(render);  
->>>>>>> 705b57c1ca097db9aa9b66efb7161978476e68d5
 
     //mesh.rotation.set(r, 20, 5);
 
@@ -84,30 +165,21 @@ function init(){
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
 
-    //BANA -------------------------
-    var geometry = new THREE.Geometry(); 
+   bana1();
+   bana2();
+   bana3();
 
-    geometry.vertices.push(new THREE.Vector3(-7.5, 0, -100));//Vertice 0
-    geometry.vertices.push(new THREE.Vector3( 7.5, 0, -100));//Vertice 1
-    geometry.vertices.push(new THREE.Vector3( 7.5, 0,  100));//Vertice 2
-    geometry.vertices.push(new THREE.Vector3(-7.5, 0,  100));//Vertice 3
-    		
-    geometry.faces.push(new THREE.Face3( 1, 0, 2));
-    geometry.faces.push(new THREE.Face3( 2, 0, 3));
-	
-
-   kuben();// ------------
+   klot();
+   rannor(-8.75);
+   rannor(-13.25);
+   rannor(8.75);
+   rannor(13.25);
+   golvMellenRannor(-10);
+   golvMellenRannor(10);
 
 
-$container.append(renderer.domElement);
-
-/* bitmap = new Image();
-
-    bitmap.src = 'https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg'; // Pre-load the bitmap, in conjunction with the Start button, to avoid any potential THREE.ImageUtils.loadTexture async issues.
-    bitmap.onerror = function () {
-      console.error("Error loading: " + bitmap.src);
-    }*/
-
+//----------------- HÄR GÖRS GRISBOLLEN
+/*
 var texture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Desktop/gris.jpg', {}, function(){ renderer.render(scene, camera); } );
 var testMaterial = new THREE.MeshBasicMaterial({map: texture})
 
@@ -119,131 +191,12 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
     var testSphere = new THREE.Mesh(testGeometry, testMaterial); // Create a mesh based on the specified geometry (cube) and material (blue skin).
 
     scene.add(testSphere); // Add the sphere at (0, 0, 0).
-
-
-
-// https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
-     /*var kGeometry = new THREE.CubeGeometry( 10, 10, 10); // storleken på kuben
-
-//kMaterial = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg")});
-    //var kMaterial = THREE.ImageUtils.loadTexture('https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg');
-/////    kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
-   // var material = new THREE.MeshLambertMaterial({
-     //   map: THREE.ImageUtils.loadTexture('crate.jpg')
-
-    mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
-    mesh.position.z = 50
-
-    scene.add( mesh );*/
-
-  
-    //------------------
-
-
-
-
-
-
-    //HEJ GITHUB FUNKAR,,,, kanske.
-    //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
-    //var texture = new THREE.ImageUtils.loadTexture("C:\Users\isabelle\Documents\MoS\js\lane.jpg");
-
-    //texture.wrapS = THREE.RepeatWrapping;
-    //texture.wrapT = THREE.RepeatWrapping;
-    //texture.repeat.set( 4, 4 );
-
-    			
-    var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
-	
-	//var texture = THREE.ImageUtils.loadTexture('http://thumbs.dreamstime.com/z/bowling-lane-chart-15312975.jpg', {}, function(){ renderer.render(scene, camera); } );
-	//var material = THREE.MeshFaceMaterial( {map: texture, side:THREE.DoubleSide});
-    //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
-   // var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg")});
-    var floor = new THREE.Mesh(geometry, material); 
-    scene.add(floor); 
-	
-	
-	//ANDRA BANOR
-	
-	var geometry10 = new THREE.Geometry(); 
-
-    geometry10.vertices.push(new THREE.Vector3(-29.5, 0, -100));//Vertice 0
-    geometry10.vertices.push(new THREE.Vector3(-14.5, 0, -100));//Vertice 1
-    geometry10.vertices.push(new THREE.Vector3(-14.5, 0,  100));//Vertice 2
-    geometry10.vertices.push(new THREE.Vector3(-29.5, 0,  100));//Vertice 3
-    		
-    geometry10.faces.push(new THREE.Face3( 1, 0, 2));
-    geometry10.faces.push(new THREE.Face3( 2, 0, 3));
-	
-	var floor2 = new THREE.Mesh(geometry10, material); 
-	floor2.doubleSided = true; 
-    scene.add(floor2); 
-	
-
-	var geometry11 = new THREE.Geometry(); 
-
-    geometry11.vertices.push(new THREE.Vector3(14.5, 0, -100));//Vertice 0
-    geometry11.vertices.push(new THREE.Vector3(29.5, 0, -100));//Vertice 1
-    geometry11.vertices.push(new THREE.Vector3(29.5, 0,  100));//Vertice 2
-    geometry11.vertices.push(new THREE.Vector3(14.5, 0,  100));//Vertice 3
-    		
-    geometry11.faces.push(new THREE.Face3( 1, 0, 2));
-    geometry11.faces.push(new THREE.Face3( 2, 0, 3));
-	
-	var floor3 = new THREE.Mesh(geometry11, material); 
-	floor3.doubleSided = true; 
-    scene.add(floor3);
-	
-
-    //KÄGLA
-    var geometry2= new THREE.CylinderGeometry( 0.25, 0.5, 2, 35 );
-
-    // load a texture, set wrap mode to repeat
-    //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
-    //texture.wrapS = THREE.RepeatWrapping;
-    //texture.wrapT = THREE.RepeatWrapping;
-    //texture.repeat.set( 4, 4 );
-
-
-    //var map = new THREE.TextureLoader().load( '/Users/madeleinerapp/Desktop/fortrollande_skog_large.jpg ' );
-    //map.wrapS = map.wrapT = THREE.RepeatWrapping;
-    //map.anisotropy = 16;
-
-    var material2 = new THREE.MeshBasicMaterial( {color: 0x0033CC} );
-    var cylinder = new THREE.Mesh( geometry2, material2 );
-    cylinder.translateZ(-5);
-    cylinder.translateY(1);
-    scene.add( cylinder );
-
-    //KLOT
-    var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
-    var material3 = new THREE.MeshBasicMaterial( {color: 0xFF3300} );
-    // material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
-
-
-    var KLOT = new THREE.Mesh(geometry3, material3);
-    KLOT.translateZ(90);
-    KLOT.translateY(1.09);
-    scene.add(KLOT);
-
-    //VÄGG
-    //var texture4 = THREE.ImageUtils.loadTexture( '/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ' );
-  //  texture4.needsUpdate = true;
-        //materialT = new THREE.MeshBasicMaterial]({map : '/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg'});
-    //var loader = new THREE.JSONLoader();
-
-    //loader.load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg', modelLoaderCallback);
-    // TEST-------
-
-    //var texture4 = THREE.ImageUtils.loadTexture( '/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ' );
-   // materialT.needsUpdate = true;
+*/
+//----------------- 
 
 
     var geometry4 = new THREE.PlaneGeometry(250, 180, 5);
     var texture4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
-
-
-
 
 
     var vagg = new THREE.Mesh(geometry4, texture4);
@@ -265,6 +218,7 @@ var material5 = new THREE.MeshBasicMaterial({color: 0xcc00cc});
 
 var vagg2 = new THREE.Mesh(geometry5, material5); 
 scene.add(vagg2); 
+// ---
 
 var geometry6 = new THREE.Geometry();
 
@@ -279,172 +233,11 @@ geometry6.faces.push(new THREE.Face3( 3, 0, 2));
 var vagg3 = new THREE.Mesh(geometry6, material5); 
 scene.add(vagg3); 
 
-//RÄNNOR 
-
-var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
-var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
-
-var cylinder_mesh = new THREE.Mesh(long_cylinder, material7);
-
-cylinder_mesh.rotation.x = Math.PI /2;
-cylinder_mesh.translateX(-8.75);
-
-scene.add(cylinder_mesh);
-
-			// var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
-			// var cylinder_mesh = new THREE.Mesh(long_cylinder);
-
-			// cylinder_mesh.rotation.x = Math.PI /2;
-			// cylinder_mesh.translateX(-8.75);
-
-			// var long_cylinder_bsp = new THREEBSP(cylinder_mesh);
-
-			// var long_plane = new THREE.PlaneGeometry(2.5, 200);
-			// var long_plane_mesh = new THREE.Mesh(long_plane);
-
-			// long_plane_mesh.rotation.x = Math.PI /2;
-			// long_plane_mesh.translateX(-8.75);
-
-			// var long_plane_bsp = new THREEBSP(long_plane_mesh);
-
-			// var subtract_bsp = long_cylinder_bsp.subtract(long_plane_bsp);
-			// var result = subtract_bsp.toMesh( new THREE.MeshBasicMaterial( {color: 0x0000ff} ));
-			// result.geometry.computeVertexNormals();
-			// scene.add(result);
-
-
-// var cube_geometry = new THREE.CubeGeometry( 3, 3, 3 );
-// var cube_mesh = new THREE.Mesh( cube_geometry );
-// cube_mesh.position.x = -7;
-// var cube_bsp = new ThreeBSP( cube_mesh );
-// var sphere_geometry = new THREE.SphereGeometry( 1.8, 32, 32 );
-// var sphere_mesh = new THREE.Mesh( sphere_geometry );
-// sphere_mesh.position.x = -7;
-// var sphere_bsp = new ThreeBSP( sphere_mesh );
-
-// var subtract_bsp = cube_bsp.subtract( sphere_bsp );
-// var result = subtract_bsp.toMesh( new THREE.MeshLambertMaterial({ shading: THREE.SmoothShading, map: THREE.ImageUtils.loadTexture('texture.png') }) );
-// result.geometry.computeVertexNormals();
-// scene.add( result );
 
 
 
-
-var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
-
-var cylinder_mesh2 = new THREE.Mesh(long_cylinder2, material7);
-
-cylinder_mesh2.rotation.x = Math.PI /2;
-cylinder_mesh2.translateX(8.75);
-
-scene.add(cylinder_mesh2);
-
-
-var long_cylinder3 = new THREE.CylinderGeometry(1.25, 1.25, 200);
-
-var cylinder_mesh3 = new THREE.Mesh(long_cylinder3, material7);
-
-cylinder_mesh3.rotation.x = Math.PI /2;
-cylinder_mesh3.translateX(-13.25);
-
-scene.add(cylinder_mesh3);
-
-
-var long_cylinder4 = new THREE.CylinderGeometry(1.25, 1.25, 200);
-
-var cylinder_mesh4 = new THREE.Mesh(long_cylinder4, material7);
-
-cylinder_mesh4.rotation.x = Math.PI /2;
-cylinder_mesh4.translateX(13.25);
-
-scene.add(cylinder_mesh4);
-
-var long_cylinder5 = new THREE.CylinderGeometry(1.25, 1.25, 200);
-
-var cylinder_mesh5 = new THREE.Mesh(long_cylinder5, material7);
-
-cylinder_mesh5.rotation.x = Math.PI /2;
-cylinder_mesh5.translateX(30.75);
-
-scene.add(cylinder_mesh5);
-
-var long_cylinder6 = new THREE.CylinderGeometry(1.25, 1.25, 200);
-
-var cylinder_mesh6 = new THREE.Mesh(long_cylinder6, material7);
-
-cylinder_mesh6.rotation.x = Math.PI /2;
-cylinder_mesh6.translateX(-30.75);
-
-scene.add(cylinder_mesh6);
 
 //GOLV MELLAN RÄNNOR
-
-var geometry8 = new THREE.Geometry();
-
-geometry8.vertices.push(new THREE.Vector3(-10, 0, -100));//Vertice 0
-geometry8.vertices.push(new THREE.Vector3(-12, 0, -100));//Vertice 1
-geometry8.vertices.push(new THREE.Vector3(-12, 0,  100));//Vertice 2
-geometry8.vertices.push(new THREE.Vector3(-10, 0,  100));//Vertice 
-
-geometry8.faces.push(new THREE.Face3( 1, 2, 0));
-geometry8.faces.push(new THREE.Face3( 3, 0, 2));
-
-var material8 = new THREE.MeshBasicMaterial({color: 0xccffff}); 
-var golv_mesh = new THREE.Mesh(geometry8, material8);
-
-scene.add(golv_mesh);
-
-
-var geometry9 = new THREE.Geometry();
-
-geometry9.vertices.push(new THREE.Vector3(12, 0, -100));//Vertice 0
-geometry9.vertices.push(new THREE.Vector3(10, 0, -100));//Vertice 1
-geometry9.vertices.push(new THREE.Vector3(10, 0,  100));//Vertice 2
-geometry9.vertices.push(new THREE.Vector3(12, 0,  100));//Vertice 
-
-geometry9.faces.push(new THREE.Face3( 1, 2, 0));
-geometry9.faces.push(new THREE.Face3( 3, 0, 2));
-
-var golv_mesh2 = new THREE.Mesh(geometry9, material8);
-
-scene.add(golv_mesh2);
-
-var geometry12 = new THREE.Geometry();
-
-geometry12.vertices.push(new THREE.Vector3(-32, 0, -100));//Vertice 0
-geometry12.vertices.push(new THREE.Vector3(-34, 0, -100));//Vertice 1
-geometry12.vertices.push(new THREE.Vector3(-34, 0, 100));//Vertice 2
-geometry12.vertices.push(new THREE.Vector3(-32, 0,  100));//Vertice 
-
-geometry12.faces.push(new THREE.Face3( 1, 2, 0));
-geometry12.faces.push(new THREE.Face3( 3, 0, 2));
-
-var material8 = new THREE.MeshBasicMaterial({color: 0xccffff}); 
-var golv_mesh3 = new THREE.Mesh(geometry12, material8);
-
-scene.add(golv_mesh3);
-
-//GOLV FRAMFÖR BANOR
-
-var geometry13 = new THREE.Geometry();
-
-geometry13.vertices.push(new THREE.Vector3(-125, 0, 200));//Vertice 0
-geometry13.vertices.push(new THREE.Vector3( 125, 0, 200));//Vertice 1
-geometry13.vertices.push(new THREE.Vector3( 125, 0, 100));//Vertice 2
-geometry13.vertices.push(new THREE.Vector3(-125, 0, 100));//Vertice 
-
-geometry13.faces.push(new THREE.Face3( 1, 2, 0));
-geometry13.faces.push(new THREE.Face3( 3, 0, 2));
-
-var material9 = new THREE.MeshBasicMaterial({color: 0x006600});
-var golv_mesh4 = new THREE.Mesh(geometry13, material9);
-
-scene.add(golv_mesh4);
-
-
-
-
-
 
 
 
