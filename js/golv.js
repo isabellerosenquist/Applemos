@@ -20,46 +20,20 @@ render();
 
 
 
-function bana1(){
+function bana(par1){
 
-     var kGeometry = new THREE.CubeGeometry( 20, 0.1, 100); // storleken på kuben
+     var kGeometry = new THREE.CubeGeometry( 17, 0.1, 100); // storleken på kuben
 
     var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane.jpg', {}, function(){ renderer.render(scene, camera); } );
     var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
 
     mesh = new THREE.Mesh(kGeometry, tematerial ); // tillhör kuben 
     mesh.position.z = 50
+    mesh.position.x = par1;
 
     scene.add( mesh );
 }
 
-function bana2(){
-    
-     var kGeometry = new THREE.CubeGeometry( 20, 0.1, 100); // storleken på kuben
-
-    var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane.jpg', {}, function(){ renderer.render(scene, camera); } );
-    var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
-
-    mesh = new THREE.Mesh(kGeometry, tematerial ); // tillhör kuben 
-    mesh.position.z = 50;
-    mesh.position.x = 22;
-
-    scene.add( mesh );
-}
-
-function bana3(){
-    
-     var kGeometry = new THREE.CubeGeometry( 20, 0.1, 100); // storleken på kuben
-
-    var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane.jpg', {}, function(){ renderer.render(scene, camera); } );
-    var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
-
-    mesh = new THREE.Mesh(kGeometry, tematerial ); // tillhör kuben 
-    mesh.position.z = 50;
-    mesh.position.x = -22;
-
-    scene.add( mesh );
-}
 
 function klot(){
 
@@ -77,7 +51,7 @@ function klot(){
 
 function rannor(par1){
 
-var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
+var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 100);
 
 
  var rannorTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/tex.jpg ', {}, function(){ renderer.render(scene, camera); } ); 
@@ -89,6 +63,7 @@ var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
 //var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
 
 var cylinder_mesh = new THREE.Mesh(long_cylinder, rannorMaterial);
+cylinder_mesh.translateZ(51);
 
 cylinder_mesh.rotation.x = Math.PI /2;
 cylinder_mesh.translateX(par1);
@@ -111,6 +86,105 @@ mesh.position.x = par1;
 scene.add( mesh );
 
 }
+
+
+function vagg1(){
+
+
+    var vaggGeometry = new THREE.PlaneGeometry(200, 100, 5);
+
+    var vaggTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/bakg.jpeg', {}, function(){ renderer.render(scene, camera); } );
+     vaggTexture.repeat.set( 3, 3 );
+    vaggTexture.wrapS = vaggTexture.wrapT = THREE.RepeatWrapping;
+
+    var vaggMaterial = new THREE.MeshBasicMaterial({map: vaggTexture})
+
+
+    var vagg = new THREE.Mesh(vaggGeometry, vaggMaterial);
+    vagg.translateY(70);
+
+    scene.add(vagg);
+}
+
+function vagg2(par1){
+    //Andra väggar
+
+    var vaggGeometry = new THREE.PlaneGeometry(110, 110, 5);
+
+    var vaggTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/people.jpg', {}, function(){ renderer.render(scene, camera); } );
+     vaggTexture.repeat.set( 1, 1 );
+    vaggTexture.wrapS = vaggTexture.wrapT = THREE.RepeatWrapping;
+
+    var vaggMaterial = new THREE.MeshBasicMaterial({map: vaggTexture})
+
+    var vagg = new THREE.Mesh(vaggGeometry, vaggMaterial);
+    vagg.translateY(55);
+    vagg.translateX(par1 * 110);
+    vagg.translateZ(40);
+    vagg.rotation.y = (-par1)* Math.PI /3;
+
+
+    scene.add(vagg);
+
+
+}
+
+function pinnar(par1){
+
+    var vaggGeometry = new THREE.PlaneGeometry(2, 20, 10);
+
+    var vaggTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/wood.jpg', {}, function(){ renderer.render(scene, camera); } );
+     vaggTexture.repeat.set( 5, 5 );
+    vaggTexture.wrapS = vaggTexture.wrapT = THREE.RepeatWrapping;
+
+    var vaggMaterial = new THREE.MeshBasicMaterial({map: vaggTexture})
+
+
+    var vagg = new THREE.Mesh(vaggGeometry, vaggMaterial);
+    vagg.translateX(par1);
+    vagg.translateY(10);
+
+    scene.add(vagg);
+}
+
+function pinnar2(par1){
+
+    var vaggGeometry = new THREE.PlaneGeometry(52, 20, 10);
+
+    var vaggTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/wood.jpg', {}, function(){ renderer.render(scene, camera); } );
+     vaggTexture.repeat.set( 5, 5 );
+    vaggTexture.wrapS = vaggTexture.wrapT = THREE.RepeatWrapping;
+
+    var vaggMaterial = new THREE.MeshBasicMaterial({map: vaggTexture})
+
+
+    var vagg = new THREE.Mesh(vaggGeometry, vaggMaterial);
+    vagg.translateX(par1);
+    vagg.translateY(10);
+
+    scene.add(vagg);
+}
+
+function border(){
+
+    var borderGeometry = new THREE.PlaneGeometry(200, 7, 5);
+
+    var borderTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/dark2.jpg', {}, function(){ renderer.render(scene, camera); } );
+    borderTexture.repeat.set( 5, 1 );
+    borderTexture.wrapS = borderTexture.wrapT = THREE.RepeatWrapping;
+
+    var borderMaterial = new THREE.MeshBasicMaterial({map: borderTexture})
+
+
+    var border = new THREE.Mesh(borderGeometry, borderMaterial);
+    border.translateZ(3);
+    border.translateY(20);
+
+    scene.add(border);
+
+}
+
+
 
  /// -----------------------------------------------------------------------
 
@@ -165,18 +239,42 @@ function init(){
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
 
-   bana1();
-   bana2();
-   bana3();
-
    klot();
-   rannor(-8.75);
-   rannor(-13.25);
+
+   bana(0);
+   bana(22);
+   bana(-22);
+   bana(44);
+   bana(-44);
+
    rannor(8.75);
+   rannor(-8.75);
    rannor(13.25);
+   rannor(-13.25);
+   rannor(30.75);
+   rannor(-30.75);
+   rannor(35.25);
+   rannor(-35.25);
+   rannor(52.75);
+   rannor(-52.75);
+
+
    golvMellenRannor(-10);
    golvMellenRannor(10);
+   golvMellenRannor(-32);
+   golvMellenRannor(32);
+   vagg1();
+   vagg2(1);
+   vagg2(-1);
 
+   pinnar(11);
+   pinnar(-11);
+   pinnar(33);
+   pinnar(-33);
+   pinnar2(80);
+   pinnar2(-80);
+
+   border();
 
 //----------------- HÄR GÖRS GRISBOLLEN
 /*
@@ -195,49 +293,8 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
 //----------------- 
 
 
-    var geometry4 = new THREE.PlaneGeometry(250, 180, 5);
-    var texture4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
 
 
-    var vagg = new THREE.Mesh(geometry4, texture4);
-    vagg.translateY(90);
-
-
-//Andra väggar
-var geometry5 = new THREE.Geometry();
-
-geometry5.vertices.push(new THREE.Vector3(-125,   0, 0));//Vertice 0
-geometry5.vertices.push(new THREE.Vector3(-125, 180, 0));//Vertice 1
-geometry5.vertices.push(new THREE.Vector3(-125, 180, 200));//Vertice 2
-geometry5.vertices.push(new THREE.Vector3(-125,   0, 200));//Vertice 
-
-geometry5.faces.push(new THREE.Face3( 0, 1, 2));
-geometry5.faces.push(new THREE.Face3( 0, 2, 3));
-
-var material5 = new THREE.MeshBasicMaterial({color: 0xcc00cc}); 
-
-var vagg2 = new THREE.Mesh(geometry5, material5); 
-scene.add(vagg2); 
-// ---
-
-var geometry6 = new THREE.Geometry();
-
-geometry6.vertices.push(new THREE.Vector3(125,   0, 200));//Vertice 0
-geometry6.vertices.push(new THREE.Vector3(125, 180, 200));//Vertice 1
-geometry6.vertices.push(new THREE.Vector3(125, 180,   0));//Vertice 2
-geometry6.vertices.push(new THREE.Vector3(125,   0,   0));//Vertice 
-
-geometry6.faces.push(new THREE.Face3( 1, 2, 0));
-geometry6.faces.push(new THREE.Face3( 3, 0, 2));
-
-var vagg3 = new THREE.Mesh(geometry6, material5); 
-scene.add(vagg3); 
-
-
-
-
-
-//GOLV MELLAN RÄNNOR
 
 
 
