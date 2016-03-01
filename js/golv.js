@@ -113,7 +113,7 @@ function init(){
     var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
 	
 	//var texture = THREE.ImageUtils.loadTexture('http://thumbs.dreamstime.com/z/bowling-lane-chart-15312975.jpg', {}, function(){ renderer.render(scene, camera); } );
-
+	//var material = THREE.MeshFaceMaterial( {map: texture, side:THREE.DoubleSide});
     //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
     //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
     var floor = new THREE.Mesh(geometry, material); 
@@ -342,6 +342,20 @@ var material8 = new THREE.MeshBasicMaterial({color: 0xccffff});
 var golv_mesh3 = new THREE.Mesh(geometry12, material8);
 
 scene.add(golv_mesh3);
+
+//GOLV FRAMFÖR BANOR
+
+// var geometry13 = new THREE.PlaneGeometry(250, 200, 50);
+// var material9 = new THREE.MeshBasicMaterial({color: 0x006600 side:THREE.DoubleSide});
+// var golv_mesh4 = new THREE.Mesh(geometry13, material9);
+
+// golv_mesh4.rotation.x = -Math.PI /2;
+// golv_mesh4.translateZ(300);
+
+// scene.add(golv_mesh4);
+
+
+
 
 
 
