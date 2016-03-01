@@ -8,9 +8,10 @@ var r;
 var dtime;
 var a; 
   var kMaterial
+
 init();
 animate();
-
+render();
 
 
  /// ----------------------------- FUNCTIONS----------------------------------
@@ -40,7 +41,7 @@ function animate() {
    // mesh.rotation.y += .01;
 
     render();
-    requestAnimationFrame( animate );
+   // requestAnimationFrame( animate );
 }
   
 function render() {
@@ -53,7 +54,7 @@ function render() {
     //mesh.scale.z    = 1.0 + 0.3*Math.sin(dtime/300);
 
 
-    mesh.position.set(1,1,dtime);
+   // mesh.position.set(1,1,dtime); // denna får den att röra på sig. FUNKAR
 
 
     renderer.render( scene, camera );
@@ -181,11 +182,26 @@ function init(){
     scene.add(KLOT);
 
     //VÄGG
+    //var texture4 = THREE.ImageUtils.loadTexture( '/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ' );
+  //  texture4.needsUpdate = true;
+        //materialT = new THREE.MeshBasicMaterial]({map : '/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg'});
+    //var loader = new THREE.JSONLoader();
+
+    //loader.load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg', modelLoaderCallback);
+    // TEST-------
+
+    //var texture4 = THREE.ImageUtils.loadTexture( '/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ' );
+   // materialT.needsUpdate = true;
+
 
     var geometry4 = new THREE.PlaneGeometry(250, 180, 5);
-    var material4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
+    var texture4 = new THREE.MeshBasicMaterial( {color: 0x66CCFF} );
 
-    var vagg = new THREE.Mesh(geometry4, material4);
+
+
+
+
+    var vagg = new THREE.Mesh(geometry4, texture4);
     vagg.translateY(90);
 
 
