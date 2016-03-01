@@ -345,15 +345,6 @@ scene.add(golv_mesh3);
 
 //GOLV FRAMFÖR BANOR
 
-// var geometry13 = new THREE.PlaneGeometry(250, 200, 50);
-// var material9 = new THREE.MeshBasicMaterial({color: 0x006600 side:THREE.DoubleSide});
-// var golv_mesh4 = new THREE.Mesh(geometry13, material9);
-
-// golv_mesh4.rotation.x = -Math.PI /2;
-// golv_mesh4.translateZ(300);
-
-// scene.add(golv_mesh4);
-
 var geometry13 = new THREE.Geometry();
 
 geometry13.vertices.push(new THREE.Vector3(-125, 0, 200));//Vertice 0
