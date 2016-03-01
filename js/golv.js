@@ -248,6 +248,44 @@ cylinder_mesh.translateX(-8.75);
 
 scene.add(cylinder_mesh);
 
+			// var long_cylinder = new THREE.CylinderGeometry(1.25, 1.25, 200);
+			// var cylinder_mesh = new THREE.Mesh(long_cylinder);
+
+			// cylinder_mesh.rotation.x = Math.PI /2;
+			// cylinder_mesh.translateX(-8.75);
+
+			// var long_cylinder_bsp = new THREEBSP(cylinder_mesh);
+
+			// var long_plane = new THREE.PlaneGeometry(2.5, 200);
+			// var long_plane_mesh = new THREE.Mesh(long_plane);
+
+			// long_plane_mesh.rotation.x = Math.PI /2;
+			// long_plane_mesh.translateX(-8.75);
+
+			// var long_plane_bsp = new THREEBSP(long_plane_mesh);
+
+			// var subtract_bsp = long_cylinder_bsp.subtract(long_plane_bsp);
+			// var result = subtract_bsp.toMesh( new THREE.MeshBasicMaterial( {color: 0x0000ff} ));
+			// result.geometry.computeVertexNormals();
+			// scene.add(result);
+
+
+// var cube_geometry = new THREE.CubeGeometry( 3, 3, 3 );
+// var cube_mesh = new THREE.Mesh( cube_geometry );
+// cube_mesh.position.x = -7;
+// var cube_bsp = new ThreeBSP( cube_mesh );
+// var sphere_geometry = new THREE.SphereGeometry( 1.8, 32, 32 );
+// var sphere_mesh = new THREE.Mesh( sphere_geometry );
+// sphere_mesh.position.x = -7;
+// var sphere_bsp = new ThreeBSP( sphere_mesh );
+
+// var subtract_bsp = cube_bsp.subtract( sphere_bsp );
+// var result = subtract_bsp.toMesh( new THREE.MeshLambertMaterial({ shading: THREE.SmoothShading, map: THREE.ImageUtils.loadTexture('texture.png') }) );
+// result.geometry.computeVertexNormals();
+// scene.add( result );
+
+
+
 
 var long_cylinder2 = new THREE.CylinderGeometry(1.25, 1.25, 200);
 
