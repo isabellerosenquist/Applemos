@@ -8,31 +8,24 @@ var r;
 var dtime;
 var a; 
   var kMaterial
+var bitmap // bitmapptest
 
 init();
 animate();
 render();
 
+// // https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
 
  /// ----------------------------- FUNCTIONS----------------------------------
 
 
 
 
-
 function kuben(){
-   var kGeometry = new THREE.CubeGeometry( 10, 10, 10); // storleken på kuben
 
-// kMaterial = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
-    kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
-   // var material = new THREE.MeshLambertMaterial({
-     //   map: THREE.ImageUtils.loadTexture('crate.jpg')
 
-    mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
 
-    mesh.position.z = 50
 
-    scene.add( mesh );
 }
 
 
@@ -57,8 +50,8 @@ function render() {
    // mesh.position.set(1,1,dtime); // denna får den att röra på sig. FUNKAR
 
 
-    renderer.render( scene, camera );
      requestAnimationFrame(render);  
+    renderer.render( scene, camera );
 
     //mesh.rotation.set(r, 20, 5);
 
@@ -79,12 +72,12 @@ function init(){
     a = -1;
 
     var $container = $('#container');
+    scene = new THREE.Scene(); 
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000); 
 
     renderer = new THREE.WebGLRenderer();
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000); 
-    scene = new THREE.Scene(); 
 
     //BANA -------------------------
     var geometry = new THREE.Geometry(); 
@@ -98,8 +91,53 @@ function init(){
     geometry.faces.push(new THREE.Face3( 2, 0, 3));
 	
 
+   kuben();// ------------
 
-    kuben();
+
+$container.append(renderer.domElement);
+
+/* bitmap = new Image();
+
+    bitmap.src = 'https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg'; // Pre-load the bitmap, in conjunction with the Start button, to avoid any potential THREE.ImageUtils.loadTexture async issues.
+    bitmap.onerror = function () {
+      console.error("Error loading: " + bitmap.src);
+    }*/
+
+var texture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Desktop/gris.jpg', {}, function(){ renderer.render(scene, camera); } );
+var testMaterial = new THREE.MeshBasicMaterial({map: texture})
+
+  // var testTexture = THREE.ImageUtils.loadTexture(bitmap.src); // Create texture object based on the given bitmap path.
+    //var testMaterial = new THREE.MeshBasicMaterial({ map: testTexture }); // Create a material (for the spherical mesh) that reflects light, potentially causing sphere surface shadows.
+
+    var testGeometry = new THREE.SphereGeometry(50, 64, 64); // Radius size, number of vertical segments, number of horizontal rings.
+
+    var testSphere = new THREE.Mesh(testGeometry, testMaterial); // Create a mesh based on the specified geometry (cube) and material (blue skin).
+
+    scene.add(testSphere); // Add the sphere at (0, 0, 0).
+
+
+
+// https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
+     /*var kGeometry = new THREE.CubeGeometry( 10, 10, 10); // storleken på kuben
+
+//kMaterial = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg")});
+    //var kMaterial = THREE.ImageUtils.loadTexture('https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg');
+/////    kMaterial = new THREE.MeshBasicMaterial({color: 0x33FF00} ); 
+   // var material = new THREE.MeshLambertMaterial({
+     //   map: THREE.ImageUtils.loadTexture('crate.jpg')
+
+    mesh = new THREE.Mesh(kGeometry, kMaterial ); // tillhör kuben 
+    mesh.position.z = 50
+
+    scene.add( mesh );*/
+
+  
+    //------------------
+
+
+
+
+
 
     //HEJ GITHUB FUNKAR,,,, kanske.
     //var texture = new THREE.TextureLoader().load( "image/lane.jpg" );
@@ -113,7 +151,7 @@ function init(){
     var material = new THREE.MeshBasicMaterial({color: 0xffff00}); 
 
     //var material = new THREE.MeshBasicMaterial({ map: texture, side:THREE.DoubleSide});
-    //var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("image/lane.jpg")});
+   // var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("https://s-media-cache-ak0.pinimg.com/564x/ee/9d/6a/ee9d6a81cb5530c7337780003d95f0b2.jpg")});
     var floor = new THREE.Mesh(geometry, material); 
     scene.add(floor); 
 	
