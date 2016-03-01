@@ -354,6 +354,24 @@ scene.add(golv_mesh3);
 
 // scene.add(golv_mesh4);
 
+var geometry13 = new THREE.Geometry();
+
+geometry13.vertices.push(new THREE.Vector3(-125, 0, 200));//Vertice 0
+geometry13.vertices.push(new THREE.Vector3( 125, 0, 200));//Vertice 1
+geometry13.vertices.push(new THREE.Vector3( 125, 0, 100));//Vertice 2
+geometry13.vertices.push(new THREE.Vector3(-125, 0, 100));//Vertice 
+
+geometry13.faces.push(new THREE.Face3( 1, 2, 0));
+geometry13.faces.push(new THREE.Face3( 3, 0, 2));
+
+var material9 = new THREE.MeshBasicMaterial({color: 0x006600});
+var golv_mesh4 = new THREE.Mesh(geometry13, material9);
+
+scene.add(golv_mesh4);
+
+
+
+
 
 
 
