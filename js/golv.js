@@ -3,6 +3,7 @@ var camera;
 var renderer;
 var mesh;
 var kubis; 
+var KLOT;
 // git add file.name && git commit -m "removed merge conflicts"
 var startTime   = Date.now();
 var r;
@@ -15,7 +16,7 @@ var container,stats;
 
 init();
 animate();
-render();
+//render();
 
 var clock = new THREE.Clock();
 
@@ -247,14 +248,6 @@ function tak(){
   scene.add( mesh );
 }
 
-function addLights() {
-
-  var light = new THREE.DirectionalLight( 0x999999, 2 );
-  light.position.x = 50;
-  light.position.y = 50;
-  light.position.z = 50;
-  scene.add( light );
-}
 
 function kagla(par1){
 
@@ -358,20 +351,21 @@ function init(){
   r = 1;
   dtime = 1;
   a = -1;
-  startTime
+  startTime;
 
-  container = document.getElementById( 'container' );
+  //container = document.getElementById( 'container' );
   scene = new THREE.Scene(); 
   camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000); 
 
-  renderer = new THREE.WebGLRenderer();
-  // ? renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );
+  //KAMERA POSITION
+  camera.position.z = 120; 
+  camera.position.y = 12;
+  camera.position.x = 0;
+
 
 
  klot();
-
+/*
  bana(0);
  bana(22);
  bana(-22);
@@ -414,15 +408,13 @@ function init(){
  kagla(22); 
  kagla(-22); 
  kagla(44); 
- kagla(-44); 
+ kagla(-44); */
 
 
 
 
 
 
-
-addLights();
 
 //----------------- HÄR GÖRS GRISBOLLEN
 /*
@@ -441,30 +433,27 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
 //----------------- 
 
 // TEST KUB-----------------
-   // var texture20 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ', {}, function(){ renderer.render(scene, camera); } );
-//    var material30 = new THREE.MeshBasicMaterial({map: texture20})
+  var texture20 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
+  //    var material30 = new THREE.MeshBasicMaterial({map: texture20})
 
-var geometry30 = new THREE.CylinderGeometry(1, 1, 10);
+  var geometry30 = new THREE.CylinderGeometry(1, 1, 10);
 
-var material30 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+  var material30 = new THREE.MeshBasicMaterial( { map: texture20 } );
 
-//var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
+  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
 
-kubis = new THREE.Mesh(geometry30, material30);
+  kubis = new THREE.Mesh(geometry30, material30);
 
-kubis.translateZ(100);
-kubis.translateY(5);
-kubis.translateX(7);
-scene.add(kubis);
+  kubis.translateZ(100);
+  kubis.translateY(5);
+  kubis.translateX(7);
+  scene.add(kubis);
 // --------------------------
 
 
 
 
-//KAMERA POSITION
-camera.position.z = 120; 
-camera.position.y = 12;
-camera.position.x = 0;
+
 //camera.rotation.x = -Math.PI /10;
 
 
@@ -486,32 +475,47 @@ camera.position.x = 0;
     // };
 
 
+  //render();
+  //$container.append(renderer.domElement);// attach the render-supplied DOM element ???
+ /* renderer = new THREE.WebGLRenderer();
+  renderer.setPixelRatio( window.devicePixelRatio );
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  document.body.appendChild( renderer.domElement );*/
+
+  //
+  renderer = new THREE.WebGLRenderer();
+  // ? renderer.setPixelRatio( window.devicePixelRatio );
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
+
+  document.body.appendChild( renderer.domElement );
+
   window.addEventListener( 'resize', onWindowResize, false );
-
-  render();
-  $container.append(renderer.domElement);// attach the render-supplied DOM element ???
-
+animate();
 
 }
 
 function animate() {
 
   requestAnimationFrame( animate );
-  render();
 
-  //kubis.rotation.x += .04;
-  //kubis.rotation.y += .01;
+  dtime = 0 - (((Date.now() - startTime)/50)); // denna får den att röra på sig. FUNKAR
+
+  kubis.rotation.x += .04;
+ // kubis.rotation.y += .01;
   //renderer.render( scene, camera );  
-  kubis.position.set(1,1, r)
+  kubis.position.set(10,10, r);
+  renderer.render( scene, camera );
+  r = r+1; 
 
 }
-function rotateCube() {
+/*function rotateCube() {
   kubis.rotation.x -= 0.1;
   kubis.rotation.y -= 0.2;
   kubis.rotation.z -= 0.3;
-}
+}*/
 
-
+/*
 function render() {
   dtime = 0 - (((Date.now() - startTime)/50)); // denna får den att röra på sig. FUNKAR
 
@@ -536,7 +540,7 @@ function render() {
   //mesh.scale.z    = 1.0 + 0.3*Math.sin(dtime/300);
   */
 
-
+/*
 
   requestAnimationFrame(render);  
   renderer.render( scene, camera );
@@ -545,7 +549,7 @@ function render() {
   r = r+1; 
 
 
-}
+}*/
 
 
 
