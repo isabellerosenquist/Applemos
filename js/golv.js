@@ -572,7 +572,8 @@ function animate() {
  // kubis.rotation.y += .01;
   //renderer.render( scene, camera );  
   //kubis.position.set(10,10, r);
-  KLOT.position.set(0,1.09, 90-(r * 0.1));
+  KLOT.position.setX(1.0 + 0.3*Math.sin(r/10));
+  KLOT.position.setZ(90-(r * 0.1));
   KLOT.rotation.x -= 0.01;
   Mcylinder_mesh1.position.setZ(10.56 +(r * 0.2));  
   Mcylinder_mesh2.position.setZ(7.92 +(r * 0.2));  
