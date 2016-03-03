@@ -19,6 +19,16 @@ animate();
 //render();
 
 var clock = new THREE.Clock();
+var Mcylinder_mesh1
+var Mcylinder_mesh2
+var Mcylinder_mesh3
+var Mcylinder_mesh4
+var Mcylinder_mesh5
+var Mcylinder_mesh6
+var Mcylinder_mesh7
+var Mcylinder_mesh8
+var Mcylinder_mesh9
+var Mcylinder_mesh10
 
 
 
@@ -35,7 +45,7 @@ WINDOWS: chrome --allow-file-access-from-files
 
 function bana(par1){
 
-     var kGeometry = new THREE.CubeGeometry( 17, 0.1, 100); // storleken på kuben
+    var kGeometry = new THREE.CubeGeometry( 17, 0.1, 100); // storleken på kuben
 
     var tetexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/lane3.jpg', {}, function(){ renderer.render(scene, camera); } );
     var tematerial = new THREE.MeshBasicMaterial({map: tetexture})
@@ -50,7 +60,18 @@ function bana(par1){
 
 
 function klot(){
+ var texture2 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ', {}, function(){ renderer.render(scene, camera); } );
 
+  var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
+
+  var material3 = new THREE.MeshBasicMaterial({map: texture2})
+
+  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
+
+  KLOT = new THREE.Mesh(geometry3, material3);
+  KLOT.translateZ(90);
+  KLOT.translateY(1.09);
+  scene.add(KLOT);
 }
 
 function rannor(par1){
@@ -291,7 +312,7 @@ function kagla(par1){
 
     // Kägla 6
   var cylinder_mesh6 = new THREE.Mesh(cylinder, kagMaterial);
-  cylinder_mesh6.translateX(3.04) + par1;
+  cylinder_mesh6.translateX(3.04 + par1);
   cylinder_mesh6.translateZ(5.28);
   cylinder_mesh6.translateY(1.9);
   scene.add(cylinder_mesh6);
@@ -323,6 +344,92 @@ function kagla(par1){
   cylinder_mesh10.translateZ(2.64);
   cylinder_mesh10.translateY(1.9);
   scene.add(cylinder_mesh10);
+
+}
+
+function movingKaglor(){
+
+  var cylinder = new THREE.CylinderGeometry(0.6, 0.6, 3.8);
+
+  var kagTexture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/bowlingPin.jpg ', {}, function(){ renderer.render(scene, camera); } ); 
+  //kagTexture.repeat.set( 1, 1 );
+  //kagTexture.wrapS = kagTexture.wrapT = THREE.RepeatWrapping;
+  var kagMaterial = new THREE.MeshBasicMaterial({map: kagTexture,   side:THREE.DoubleSide, transparent:true})
+  //var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+
+
+
+  // Kägla 1
+  Mcylinder_mesh1 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh1.translateX(0 );
+  Mcylinder_mesh1.translateZ(10.56);
+  Mcylinder_mesh1.translateY(1.9);
+  Mcylinder_mesh1.rotation.y = Math.PI ;
+
+  scene.add(Mcylinder_mesh1);
+
+    // Kägla 2
+  Mcylinder_mesh2 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh2.translateX(-1.52 );
+  Mcylinder_mesh2.translateZ(7.92);
+  Mcylinder_mesh2.translateY(1.9);
+  scene.add(Mcylinder_mesh2);
+
+    // Kägla 3
+  Mcylinder_mesh3 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh3.translateX(1.52 );
+  Mcylinder_mesh3.translateZ(7.92);
+  Mcylinder_mesh3.translateY(1.9);
+  scene.add(Mcylinder_mesh3);
+
+    // Kägla 4
+  Mcylinder_mesh4 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh4.translateX(-3.04 );
+  Mcylinder_mesh4.translateZ(5.28);
+  Mcylinder_mesh4.translateY(1.9);
+  scene.add(Mcylinder_mesh4);
+
+    // Kägla 5
+  Mcylinder_mesh5 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh5.translateX(0 );
+  Mcylinder_mesh5.translateZ(5.28);
+  Mcylinder_mesh5.translateY(1.9);
+  scene.add(Mcylinder_mesh5);
+
+    // Kägla 6
+  Mcylinder_mesh6 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh6.translateX(3.04) ;
+  Mcylinder_mesh6.translateZ(5.28);
+  Mcylinder_mesh6.translateY(1.9);
+  scene.add(Mcylinder_mesh6);
+
+    // Kägla 7
+  Mcylinder_mesh7 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh7.translateX(-4.16 );
+  Mcylinder_mesh7.translateZ(2.64);
+  Mcylinder_mesh7.translateY(1.9);
+  scene.add(Mcylinder_mesh7);
+
+    // Kägla 8
+  Mcylinder_mesh8 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh8.translateX(-1.52 );
+  Mcylinder_mesh8.translateZ(2.64);
+  Mcylinder_mesh8.translateY(1.9);
+  scene.add(Mcylinder_mesh8);
+
+    // Kägla 9
+  Mcylinder_mesh9 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh9.translateX(1.52 );
+  Mcylinder_mesh9.translateZ(2.64);
+  Mcylinder_mesh9.translateY(1.9);
+  scene.add(Mcylinder_mesh9);
+
+    // Kägla 10
+  Mcylinder_mesh10 = new THREE.Mesh(cylinder, kagMaterial);
+  Mcylinder_mesh10.translateX(4.16 );
+  Mcylinder_mesh10.translateZ(2.64);
+  Mcylinder_mesh10.translateY(1.9);
+  scene.add(Mcylinder_mesh10);
 
 }
 
@@ -395,7 +502,7 @@ function init(){
  golv2();
  tak();
 
- kagla(0); 
+ movingKaglor();
  kagla(22); 
  kagla(-22); 
  kagla(44); 
@@ -404,18 +511,7 @@ function init(){
 // KLOT FAN SKAPET --------------
  // var texture2 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
 
- var texture2 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ', {}, function(){ renderer.render(scene, camera); } );
 
-  var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
-
-  var material3 = new THREE.MeshBasicMaterial({map: texture2})
-
-  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
-
-  KLOT = new THREE.Mesh(geometry3, material3);
-  KLOT.translateZ(90);
-  KLOT.translateY(1.09);
-  scene.add(KLOT);
 // ------------------------------
 
 //----------------- HÄR GÖRS GRISBOLLEN
@@ -476,8 +572,18 @@ function animate() {
  // kubis.rotation.y += .01;
   //renderer.render( scene, camera );  
   //kubis.position.set(10,10, r);
-  KLOT.position.set(0,1.09, 90-r);
-  //KLOT.translateZ(r);
+  KLOT.position.set(0,1.09, 90-(r * 0.1));
+  KLOT.rotation.x -= 0.01;
+  Mcylinder_mesh1.position.setZ(10.56 +(r * 0.2));  
+  Mcylinder_mesh2.position.setZ(7.92 +(r * 0.2));  
+  Mcylinder_mesh3.position.setZ(7.92 +(r * 0.2));  
+  Mcylinder_mesh4.position.setZ(5.28 +(r * 0.2));  
+  Mcylinder_mesh5.position.setZ(5.28 +(r * 0.2));  
+  Mcylinder_mesh6.position.setZ(5.28 +(r * 0.2));  
+  Mcylinder_mesh7.position.setZ(2.64 +(r * 0.2));  
+  Mcylinder_mesh8.position.setZ(2.64 +(r * 0.2));  
+  Mcylinder_mesh9.position.setZ(2.64 +(r * 0.2));  
+  Mcylinder_mesh10.position.setZ(2.64 +(r * 0.2));  
 
 
   renderer.render( scene, camera );
