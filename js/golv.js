@@ -50,16 +50,7 @@ function bana(par1){
 
 
 function klot(){
- var texture2 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ', {}, function(){ renderer.render(scene, camera); } );
-  var material3 = new THREE.MeshBasicMaterial({map: texture2})
 
-  var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
-  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
-
-  var KLOT = new THREE.Mesh(geometry3, material3);
-  KLOT.translateZ(90);
-  KLOT.translateY(1.09);
-  scene.add(KLOT);
 }
 
 function rannor(par1){
@@ -365,7 +356,7 @@ function init(){
 
 
  klot();
-/*
+
  bana(0);
  bana(22);
  bana(-22);
@@ -408,13 +399,24 @@ function init(){
  kagla(22); 
  kagla(-22); 
  kagla(44); 
- kagla(-44); */
+ kagla(-44); 
 
+// KLOT FAN SKAPET --------------
+ // var texture2 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
 
+ var texture2 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ', {}, function(){ renderer.render(scene, camera); } );
 
+  var geometry3 = new THREE.SphereGeometry(1.09, 15, 15);
 
+  var material3 = new THREE.MeshBasicMaterial({map: texture2})
 
+  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
 
+  KLOT = new THREE.Mesh(geometry3, material3);
+  KLOT.translateZ(90);
+  KLOT.translateY(1.09);
+  scene.add(KLOT);
+// ------------------------------
 
 //----------------- HÄR GÖRS GRISBOLLEN
 /*
@@ -433,7 +435,7 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
 //----------------- 
 
 // TEST KUB-----------------
-  var texture20 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
+  /*var texture20 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
   //    var material30 = new THREE.MeshBasicMaterial({map: texture20})
 
   var geometry30 = new THREE.CylinderGeometry(1, 1, 10);
@@ -447,40 +449,9 @@ var testMaterial = new THREE.MeshBasicMaterial({map: texture})
   kubis.translateZ(100);
   kubis.translateY(5);
   kubis.translateX(7);
-  scene.add(kubis);
+  scene.add(kubis);*/
 // --------------------------
 
-
-
-
-
-//camera.rotation.x = -Math.PI /10;
-
-
-    //KAMERA POSITION
-   // camera.position.z = 120; 
-   // camera.position.y = 12;
-   // camera.position.x = 0;
-
-    // document.addEventListener("keydown", onDocumentKeyDown, false);
-
-    // function onDocumentKeydown(event){
-
-    // var keyCode = event.which;
-
-    // var count = 1;
-
-    // if(keyCode == 32);
-    	// count++;
-    // };
-
-
-  //render();
-  //$container.append(renderer.domElement);// attach the render-supplied DOM element ???
- /* renderer = new THREE.WebGLRenderer();
-  renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );*/
 
   //
   renderer = new THREE.WebGLRenderer();
@@ -501,19 +472,19 @@ function animate() {
 
   dtime = 0 - (((Date.now() - startTime)/50)); // denna får den att röra på sig. FUNKAR
 
-  kubis.rotation.x += .04;
+  //kubis.rotation.x += .04;
  // kubis.rotation.y += .01;
   //renderer.render( scene, camera );  
-  kubis.position.set(10,10, r);
+  //kubis.position.set(10,10, r);
+  KLOT.position.set(0,1.09, 90-r);
+  //KLOT.translateZ(r);
+
+
   renderer.render( scene, camera );
   r = r+1; 
 
 }
-/*function rotateCube() {
-  kubis.rotation.x -= 0.1;
-  kubis.rotation.y -= 0.2;
-  kubis.rotation.z -= 0.3;
-}*/
+
 
 /*
 function render() {
