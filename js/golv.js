@@ -19,8 +19,16 @@ var h = 0.01;
 //var bollen = [0, 98, 0, -50, 0, 0];
 var bollen = [0, 98, 0, 0, 0, 0];
 //var bollen = [0, 98, -2.38, -10, 5, 5];
-//var bollen = [0, 98, 0, -10, 0, 0];
-//var bollen = [0, 30, 0, -20, 0, 0];
+var bollen = [0, 98, 0, 0, 0, 0];
+function foo1 () {
+  bollen = [0, 98, 0, -50, 0, 0];
+}
+function foo2 () {
+  bollen = [0, 98, -2.38, -10, 5, 5];
+}
+function foo3 () {
+  bollen = [0, 98, -10, -50, 0, 0];
+}
 
 var thePins = [[0, 10.56, 0, 0, 0, 0], [-1.52, 7.92, 0, 0, 0, 0], [1.52, 7.92, 0, 0, 0, 0], [-3.04, 5.28, 0, 0, 0, 0], [0, 5.28, 0, 0, 0, 0], [3.04, 5.28, 0, 0, 0, 0], [-4.16, 2.64, 0, 0, 0, 0], [-1.52, 2.64, 0, 0, 0, 0], [1.52, 2.64, 0, 0, 0, 0], [4.16, 2.64, 0, 0, 0, 0]];
 var camera2;
@@ -648,6 +656,9 @@ function animate() {
 }
 
 function moveBall() {
+  if (bollen[0] > 6.41 || bollen[0] < -6.41) {
+    bollen[2] = -bollen[2];
+  };
   for (var i = 0; i < thePins.length; i++) {
     if ((1.09+0.6)*(1.09+0.6) > (bollen[0]-thePins[i][0])*(bollen[0]-thePins[i][0])+(bollen[1]-thePins[i][1])*(bollen[1]-thePins[i][1])) {
 
@@ -697,7 +708,7 @@ function moveBall() {
         var vax = thePins[j][2];
         var vay = thePins[j][3];
 
-        var e = 0.9;
+        var e = 1;
         var k = 1/(ma*ma)+ 2/(ma*mb) +1/(mb*mb) - ra[0]*ra[0]/(ma*Ia) - rb[0]*rb[0]/(ma*Ib)  - ra[1]*ra[1]/(ma*Ia) - ra[1]*ra[1]/(mb*Ia) - ra[0]*ra[0]/(mb*Ia) - rb[0]*rb[0]/(mb*Ib) - rb[1]*rb[1]/(ma*Ib) - rb[1]*rb[1]/(mb*Ib) + ra[1]*ra[1]*rb[0]*rb[0]/(Ia*Ib) + ra[0]*ra[0]*rb[1]*rb[1]/(Ia*Ib) - 2*ra[0]*ra[1]*rb[0]*rb[1]/(Ia*Ib);
         var Jx = ((e+1)/k) * (vax - thePins[i][2])*( 1/ma - ra[0]*ra[0]/Ia + 1/mb - rb[0]*rb[0]/Ib) - ((e+1)/k) * (vay - thePins[i][3]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib);
         var Jy = - ((e+1)/k) * (vax - thePins[i][2]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib) + ((e+1)/k)  * (vay - thePins[i][3]) * ( 1/ma - ra[1]*ra[1]/Ia + 1/mb - rb[1]*rb[1]/Ib);
