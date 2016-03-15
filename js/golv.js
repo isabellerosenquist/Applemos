@@ -15,19 +15,51 @@ var container,stats;
  var delta;
 
 // det my hittar på
-var h = 0.01;
+var h = 0.005;
 //var bollen = [0, 98, 0, -50, 0, 0];
 var bollen = [0, 98, 0, 0, 0, 0];
 //var bollen = [0, 98, -2.38, -10, 5, 5];
-var bollen = [0, 98, 0, 0, 0, 0];
+//var bollen = [0, 98, 0, 0, 0, 0];
 function foo1 () {
   bollen = [0, 98, 0, -50, 0, 0];
+  KLOT.position.setY(1.09);
+  for (var i = 0; i < thePins.length; i++) {
+    if (thePins[i][2] != 0 || thePins[i][3] != 0) {
+      thePins[i][2] = 0;
+      thePins[i][3] = 0;
+      thePins[i][1] = -2;
+      thePins[i][0] = 2;
+    }
+  }
 }
 function foo2 () {
-  bollen = [0, 98, -2.38, -10, 5, 5];
+  bollen = [0, 98, -2.5, -10, 5, 6];
+  KLOT.position.setY(1.09);
+  for (var i = 0; i < thePins.length; i++) {
+    if (thePins[i][2] != 0 || thePins[i][3] != 0) {
+      thePins[i][2] = 0;
+      thePins[i][3] = 0;
+      thePins[i][1] = -2;
+      thePins[i][0] = 2;
+    }
+  }
 }
 function foo3 () {
   bollen = [0, 98, -10, -50, 0, 0];
+  KLOT.position.setY(1.09);
+  for (var i = 0; i < thePins.length; i++) {
+    if (thePins[i][2] != 0 || thePins[i][3] != 0) {
+      thePins[i][2] = 0;
+      thePins[i][3] = 0;
+      thePins[i][1] = -2;
+      thePins[i][0] = 2;
+    }
+  }
+}
+function foo4 () {
+  bollen = [0, 98, 0, 0, 0, 0];
+  KLOT.position.setY(1.09);
+  thePins = [[0, 10.56, 0, 0, 0, 0], [-1.52, 7.92, 0, 0, 0, 0], [1.52, 7.92, 0, 0, 0, 0], [-3.04, 5.28, 0, 0, 0, 0], [0, 5.28, 0, 0, 0, 0], [3.04, 5.28, 0, 0, 0, 0], [-4.16, 2.64, 0, 0, 0, 0], [-1.52, 2.64, 0, 0, 0, 0], [1.52, 2.64, 0, 0, 0, 0], [4.16, 2.64, 0, 0, 0, 0]];
 }
 
 var thePins = [[0, 10.56, 0, 0, 0, 0], [-1.52, 7.92, 0, 0, 0, 0], [1.52, 7.92, 0, 0, 0, 0], [-3.04, 5.28, 0, 0, 0, 0], [0, 5.28, 0, 0, 0, 0], [3.04, 5.28, 0, 0, 0, 0], [-4.16, 2.64, 0, 0, 0, 0], [-1.52, 2.64, 0, 0, 0, 0], [1.52, 2.64, 0, 0, 0, 0], [4.16, 2.64, 0, 0, 0, 0]];
@@ -377,7 +409,10 @@ function movingKaglor(){
   //kagTexture.repeat.set( 1, 1 );
   //kagTexture.wrapS = kagTexture.wrapT = THREE.RepeatWrapping;
   var kagMaterial = new THREE.MeshPhongMaterial({map: kagTexture,   side:THREE.DoubleSide, transparent:true})
-  //var material7 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+  var colorB = new THREE.MeshPhongMaterial( {color: 0x0000ff} );
+  var colorG = new THREE.MeshPhongMaterial( {color: 0x00ff00} );
+  var colorR = new THREE.MeshPhongMaterial( {color: 0xff0000} );
+
 
 
 
@@ -604,12 +639,13 @@ animate();
 
 function animate() {
 
-  requestAnimationFrame( animate );
-
+  //requestAnimationFrame( animate );
+  setTimeout(function () { requestAnimationFrame( animate ); }, 250);
+  
   dtime = (((Date.now() - startTime)/50)); // denna får den att röra på sig. FUNKAR
 
   //moveBall();
-  moveBall();
+  if (bollen[2] != 0 || bollen[3] != 0) {move();};
   KLOT.position.setX(bollen[0]);
   KLOT.position.setZ(bollen[1]);
   KLOT.rotation.x -= bollen[4]*h;
@@ -617,6 +653,8 @@ function animate() {
 
   Mcylinder_mesh1.position.setX(thePins[0][0]); 
   Mcylinder_mesh1.position.setZ(thePins[0][1]); 
+  //Mcylinder_mesh1.rotation.x -= thePins[0][4]*h;
+  //Mcylinder_mesh1.rotation.z += thePins[0][5]*h;
   
   Mcylinder_mesh2.position.setX(thePins[1][0]); 
   Mcylinder_mesh2.position.setZ(thePins[1][1]);
@@ -655,16 +693,40 @@ function animate() {
 
 }
 
-function moveBall() {
-  if (bollen[0] > 6.41 || bollen[0] < -6.41) {
-    bollen[2] = -bollen[2];
-  };
+function move() {
+  var newBall = [bollen[0],bollen[1],bollen[3],bollen[4],bollen[5],bollen[6]];
+  //var newPin = thePins;
+
+  var sliding = Math.sqrt(bollen[2]*bollen[2]+bollen[3]*bollen[3]);
+  var acX = -(0.09*98.2*bollen[2])/sliding;
+  var acY = -(0.09*98.2*bollen[3])/sliding;
+  var alphaX = (5*acY)/(2*1.09);
+  var alphaY = -(5*acX)/(2*1.09);
+
+  var dxdt = [bollen[2]+bollen[5]*1.09 , bollen[3]-bollen[4]*1.09, acX, acY, alphaX, alphaY]; //    
+  var bollX = bollen[0] + h*dxdt[0];
+  bollen[1] = bollen[1] + h*dxdt[1];
+  bollen[2] = bollen[2] + h*dxdt[2];
+  bollen[3] = bollen[3] + h*dxdt[3];
+  bollen[4] = bollen[4] + h*dxdt[4];
+  bollen[5] = bollen[5] + h*dxdt[5];
+
+  if (Math.abs(bollX) > 6.41) 
+    { bollen[2] = - bollen[2] }
+  else
+    { bollen[0] = bollX }
+
   for (var i = 0; i < thePins.length; i++) {
     if ((1.09+0.6)*(1.09+0.6) > (bollen[0]-thePins[i][0])*(bollen[0]-thePins[i][0])+(bollen[1]-thePins[i][1])*(bollen[1]-thePins[i][1])) {
 
       var dist = Math.sqrt((bollen[0]-thePins[i][0])*(bollen[0]-thePins[i][0])+(bollen[1]-thePins[i][1])*(bollen[1]-thePins[i][1]));
-      var ra = [1.09*((thePins[i][0]-bollen[0])/dist), 1.09*((thePins[i][1]-bollen[1])/dist)];
-      var rb = [0.6*((bollen[0]-thePins[i][0])/dist), 0.6*((bollen[1]-thePins[i][1])/dist)];
+      //var ra = [1.09*((thePins[i][0]-bollen[0])/dist), 1.09*((thePins[i][1]-bollen[1])/dist)];
+      //var rb = [-0.6*((bollen[0]-thePins[i][0])/dist), 0.6*((bollen[1]-thePins[i][1])/dist)];
+
+      var r = [((thePins[i][0]-bollen[0])/dist), ((thePins[i][1]-bollen[1])/dist)];
+
+      var ra = [1.09*r[0], 1.09*r[1]];
+      var rb = [-0.6*r[0], -0.6*r[1]];
 
       var ma = 70;
       var mb = 1;
@@ -675,8 +737,8 @@ function moveBall() {
 
       var e = 1;
       var k = 1/(ma*ma)+ 2/(ma*mb) +1/(mb*mb) - ra[0]*ra[0]/(ma*Ia) - rb[0]*rb[0]/(ma*Ib)  - ra[1]*ra[1]/(ma*Ia) - ra[1]*ra[1]/(mb*Ia) - ra[0]*ra[0]/(mb*Ia) - rb[0]*rb[0]/(mb*Ib) - rb[1]*rb[1]/(ma*Ib) - rb[1]*rb[1]/(mb*Ib) + ra[1]*ra[1]*rb[0]*rb[0]/(Ia*Ib) + ra[0]*ra[0]*rb[1]*rb[1]/(Ia*Ib) - 2*ra[0]*ra[1]*rb[0]*rb[1]/(Ia*Ib);
-      var Jx = ((e+1)/k) * (vax - thePins[i][2])*( 1/ma - ra[0]*ra[0]/Ia + 1/mb - rb[0]*rb[0]/Ib) - ((e+1)/k) * (vay - thePins[i][3]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib);
-      var Jy = - ((e+1)/k) * (vax - thePins[i][2]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib) + ((e+1)/k)  * (vay - thePins[i][3]) * ( 1/ma - ra[1]*ra[1]/Ia + 1/mb - rb[1]*rb[1]/Ib);
+      var Jx = ((e+1)/k) * (vax - thePins[i][2])*( 1/ma - ra[0]*ra[0]/Ia + 1/mb - rb[0]*rb[0]/Ib) + ((e+1)/k) * (vay - thePins[i][3]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib);
+      var Jy =  ((e+1)/k) * (vax - thePins[i][2]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib) + ((e+1)/k)  * (vay - thePins[i][3]) * ( 1/ma - ra[1]*ra[1]/Ia + 1/mb - rb[1]*rb[1]/Ib);
 
 
       bollen[4] = bollen[4] - (Jx*ra[1] - Jy*ra[0])/Ia;
@@ -685,21 +747,44 @@ function moveBall() {
       bollen[3] = vay - Jy/ma  + bollen[4]*1.09;
 
       
-      thePins[i][4] = thePins[i][4] - (Jx*rb[1] - Jy*rb[0])/Ib;
-      thePins[i][5] = thePins[i][5] - (Jx*rb[1] - Jy*rb[0])/Ib;
-      thePins[i][2] = (thePins[i][2] - Jx/mb) ;
+      //thePins[i][4] = thePins[i][4] + (Jx*rb[1] - Jy*rb[0])/Ib;
+      //thePins[i][5] = thePins[i][5] + (Jx*rb[1] - Jy*rb[0])/Ib;
+      thePins[i][2] = (thePins[i][2] + Jx/mb) ;
       thePins[i][3] = (thePins[i][3] + Jy/mb) ; 
 
     }
   }
 
 
-  for (var j = 0; j < 9; j++) {
-    for (var i = j+1; i < 10; i++) {
+  for (var i = 0; i < thePins.length; i++) {
+    var tot = Math.sqrt(thePins[i][2]*thePins[i][2]+thePins[i][3]*thePins[i][3]);
+    var pinacX = -(0.09*98.2*thePins[i][2])/sliding;
+    var pinacY = -(0.09*98.2*thePins[i][3])/sliding;
+
+    var dx = [thePins[i][2], thePins[i][3], pinacX, pinacY];
+    var newX = thePins[i][0] + h*dx[0];
+    thePins[i][1] = thePins[i][1] + h*dx[1];
+    thePins[i][2] = thePins[i][2] + h*dx[2];
+    thePins[i][3] = thePins[i][3] + h*dx[3]; 
+
+
+    if (Math.abs(newX) > 6.41) 
+      { thePins[i][2] = - thePins[i][2] }
+    else
+      { thePins[i][0] = newX }
+
+  } 
+
+  for (var j = 0; j < thePins.length - 1; j++) {
+    for (var i = j+1; i < thePins.length; i++) {
       if (1.44 > (thePins[j][0]-thePins[i][0])*(thePins[j][0]-thePins[i][0])+(thePins[j][1]-thePins[i][1])*(thePins[j][1]-thePins[i][1])) { 
         var dist = Math.sqrt((thePins[j][0]-thePins[i][0])*(thePins[j][0]-thePins[i][0])+(thePins[j][1]-thePins[i][1])*(thePins[j][1]-thePins[i][1]));
-        var ra = [0.6*((thePins[i][0]-thePins[j][0])/dist), 0.6*((thePins[i][1]-thePins[j][1])/dist)];
-        var rb = [0.6*((thePins[j][0]-thePins[i][0])/dist), 0.6*((thePins[j][1]-thePins[i][1])/dist)];
+        var r = [((thePins[i][0]-thePins[j][0])/dist), ((thePins[i][1]-thePins[j][1])/dist)];
+        var ra = [0.6*r[0], 0.6*r[1]];
+        var rb = [-0.6*r[0], -0.6*r[1]];
+
+        //var ra = [0.6*((thePins[i][0]-thePins[j][0])/dist), 0.6*((thePins[i][1]-thePins[j][1])/dist)];
+        //var rb = [-0.6*((thePins[j][0]-thePins[i][0])/dist), 0.6*((thePins[j][1]-thePins[i][1])/dist)];
 
         var ma = 1;
         var mb = 1;
@@ -710,38 +795,19 @@ function moveBall() {
 
         var e = 1;
         var k = 1/(ma*ma)+ 2/(ma*mb) +1/(mb*mb) - ra[0]*ra[0]/(ma*Ia) - rb[0]*rb[0]/(ma*Ib)  - ra[1]*ra[1]/(ma*Ia) - ra[1]*ra[1]/(mb*Ia) - ra[0]*ra[0]/(mb*Ia) - rb[0]*rb[0]/(mb*Ib) - rb[1]*rb[1]/(ma*Ib) - rb[1]*rb[1]/(mb*Ib) + ra[1]*ra[1]*rb[0]*rb[0]/(Ia*Ib) + ra[0]*ra[0]*rb[1]*rb[1]/(Ia*Ib) - 2*ra[0]*ra[1]*rb[0]*rb[1]/(Ia*Ib);
-        var Jx = ((e+1)/k) * (vax - thePins[i][2])*( 1/ma - ra[0]*ra[0]/Ia + 1/mb - rb[0]*rb[0]/Ib) - ((e+1)/k) * (vay - thePins[i][3]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib);
-        var Jy = - ((e+1)/k) * (vax - thePins[i][2]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib) + ((e+1)/k)  * (vay - thePins[i][3]) * ( 1/ma - ra[1]*ra[1]/Ia + 1/mb - rb[1]*rb[1]/Ib);
+        var Jx = ((e+1)/k) * (vax - thePins[i][2])*( 1/ma - ra[0]*ra[0]/Ia + 1/mb - rb[0]*rb[0]/Ib) + ((e+1)/k) * (vay - thePins[i][3]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib);
+        var Jy =  ((e+1)/k) * (vax - thePins[i][2]) *(ra[0]*ra[1] / Ia + rb[0]*rb[1] / Ib) + ((e+1)/k)  * (vay - thePins[i][3]) * ( 1/ma - ra[1]*ra[1]/Ia + 1/mb - rb[1]*rb[1]/Ib);
 
         thePins[j][2] = vax - Jx/ma;
         thePins[j][3] = vay - Jy/ma;
 
-        thePins[i][2] = (thePins[i][2] - Jx/mb) ;
+        thePins[i][2] = (thePins[i][2] + Jx/mb) ;
         thePins[i][3] = (thePins[i][3] + Jy/mb) ; 
 
       }
     }
-  }
+  } 
 
-  for (var i = 0; i < thePins.length; i++) {
-    thePins[i][0] = thePins[i][0] + h*thePins[i][2];
-    thePins[i][1] = thePins[i][1] + h*thePins[i][3];
-  }
-
-
-  var sliding = Math.sqrt(bollen[2]*bollen[2]+bollen[3]*bollen[3]);
-  var acX = -(0.09*98.2*bollen[2])/sliding;
-  var acY = -(0.09*98.2*bollen[3])/sliding;
-  var alphaX = (5*acY)/(2*1.09);
-  var alphaY = -(5*acX)/(2*1.09);
-
-  var dxdt = [bollen[2]+bollen[5]*1.09 , bollen[3]-bollen[4]*1.09, acX, acY, alphaX, alphaY]; //    
-  bollen[0] = bollen[0] + h*dxdt[0];
-  bollen[1] = bollen[1] + h*dxdt[1];
-  bollen[2] = bollen[2] + h*dxdt[2];
-  bollen[3] = bollen[3] + h*dxdt[3];
-  bollen[4] = bollen[4] + h*dxdt[4];
-  bollen[5] = bollen[5] + h*dxdt[5];
 
   if (bollen[1] < -2) {
     KLOT.position.setY(0);
