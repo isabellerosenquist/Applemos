@@ -592,37 +592,6 @@ function init(){
   var light = new THREE.AmbientLight( 0x404040 ); // soft white light
   scene.add( light );
 
-// KLOT FAN SKAPET --------------
- // var texture2 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
-
-
-// ------------------------------
-
-//----------------- HÄR GÖRS GRISBOLLEN
-/*
-var texture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Desktop/gris.jpg', {}, function(){ renderer.render(scene, camera); } );
-var testMaterial = new THREE.MeshBasicMaterial({map: texture})
-  // var testTexture = THREE.ImageUtils.loadTexture(bitmap.src); // Create texture object based on the given bitmap path.
-    //var testMaterial = new THREE.MeshBasicMaterial({ map: testTexture }); // Create a material (for the spherical mesh) that reflects light, potentially causing sphere surface shadows.
-    var testGeometry = new THREE.SphereGeometry(50, 64, 64); // Radius size, number of vertical segments, number of horizontal rings.
-    var testSphere = new THREE.Mesh(testGeometry, testMaterial); // Create a mesh based on the specified geometry (cube) and material (blue skin).
-    scene.add(testSphere); // Add the sphere at (0, 0, 0).
-*/
-//----------------- 
-
-// TEST KUB-----------------
-  /*var texture20 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
-  //    var material30 = new THREE.MeshBasicMaterial({map: texture20})
-  var geometry30 = new THREE.CylinderGeometry(1, 1, 10);
-  var material30 = new THREE.MeshBasicMaterial( { map: texture20 } );
-  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
-  kubis = new THREE.Mesh(geometry30, material30);
-  kubis.translateZ(100);
-  kubis.translateY(5);
-  kubis.translateX(7);
-  scene.add(kubis);*/
-// --------------------------
-
 
   //
   renderer = new THREE.WebGLRenderer();
