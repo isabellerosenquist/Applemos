@@ -21,7 +21,7 @@ var bollen = [0, 98, 0, 0, 0, 0];
 //var bollen = [0, 98, -2.38, -10, 5, 5];
 //var bollen = [0, 98, 0, 0, 0, 0];
 function foo1 () {
-  bollen = [0, 98, 0, -50, 0, 0];
+  bollen = [-3.04, 98, 0, -20, 10, 0];
   KLOT.position.setY(1.09);
   for (var i = 0; i < thePins.length; i++) {
     if (thePins[i][2] != 0 || thePins[i][3] != 0) {
@@ -33,7 +33,7 @@ function foo1 () {
   }
 }
 function foo2 () {
-  bollen = [0, 98, -2.5, -10, 5, 6];
+  bollen = [0, 98, -6.1, -10, 10, 8.2];
   KLOT.position.setY(1.09);
   for (var i = 0; i < thePins.length; i++) {
     if (thePins[i][2] != 0 || thePins[i][3] != 0) {
@@ -45,7 +45,7 @@ function foo2 () {
   }
 }
 function foo3 () {
-  bollen = [0, 98, -10, -50, 0, 0];
+  bollen = [0, 98, -4, -10, 13, 2];
   KLOT.position.setY(1.09);
   for (var i = 0; i < thePins.length; i++) {
     if (thePins[i][2] != 0 || thePins[i][3] != 0) {
@@ -592,6 +592,37 @@ function init(){
   var light = new THREE.AmbientLight( 0x404040 ); // soft white light
   scene.add( light );
 
+// KLOT FAN SKAPET --------------
+ // var texture2 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
+
+
+// ------------------------------
+
+//----------------- HÄR GÖRS GRISBOLLEN
+/*
+var texture = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Desktop/gris.jpg', {}, function(){ renderer.render(scene, camera); } );
+var testMaterial = new THREE.MeshBasicMaterial({map: texture})
+  // var testTexture = THREE.ImageUtils.loadTexture(bitmap.src); // Create texture object based on the given bitmap path.
+    //var testMaterial = new THREE.MeshBasicMaterial({ map: testTexture }); // Create a material (for the spherical mesh) that reflects light, potentially causing sphere surface shadows.
+    var testGeometry = new THREE.SphereGeometry(50, 64, 64); // Radius size, number of vertical segments, number of horizontal rings.
+    var testSphere = new THREE.Mesh(testGeometry, testMaterial); // Create a mesh based on the specified geometry (cube) and material (blue skin).
+    scene.add(testSphere); // Add the sphere at (0, 0, 0).
+*/
+//----------------- 
+
+// TEST KUB-----------------
+  /*var texture20 = new THREE.TextureLoader().load('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/images/klotet.jpeg ');
+  //    var material30 = new THREE.MeshBasicMaterial({map: texture20})
+  var geometry30 = new THREE.CylinderGeometry(1, 1, 10);
+  var material30 = new THREE.MeshBasicMaterial( { map: texture20 } );
+  //var material3 = THREE.ImageUtils.loadTexture('/Users/madeleinerapp/Documents/LiU/Githubmappen/Applemos/js/lane.jpg ');
+  kubis = new THREE.Mesh(geometry30, material30);
+  kubis.translateZ(100);
+  kubis.translateY(5);
+  kubis.translateX(7);
+  scene.add(kubis);*/
+// --------------------------
+
 
   //
   renderer = new THREE.WebGLRenderer();
@@ -608,8 +639,8 @@ animate();
 
 function animate() {
 
-  //requestAnimationFrame( animate );
-  setTimeout(function () { requestAnimationFrame( animate ); }, 250);
+  requestAnimationFrame( animate );
+  //setTimeout(function () { requestAnimationFrame( animate ); }, 250);
   
   dtime = (((Date.now() - startTime)/50)); // denna får den att röra på sig. FUNKAR
 
@@ -667,8 +698,8 @@ function move() {
   //var newPin = thePins;
 
   var sliding = Math.sqrt(bollen[2]*bollen[2]+bollen[3]*bollen[3]);
-  var acX = -(0.09*98.2*bollen[2])/sliding;
-  var acY = -(0.09*98.2*bollen[3])/sliding;
+  var acX = -(0.09*98.2*Math.sign(bollen[2]))/sliding;
+  var acY = -(0.09*98.2*Math.sign(bollen[3]))/sliding;
   var alphaX = (5*acY)/(2*1.09);
   var alphaY = -(5*acX)/(2*1.09);
 
@@ -681,9 +712,9 @@ function move() {
   bollen[5] = bollen[5] + h*dxdt[5];
 
   if (Math.abs(bollX) > 6.41) 
-    { bollen[2] = - bollen[2] }
+    { bollen[2] = - bollen[2]; bollen[5] = - bollen[5];}
   else
-    { bollen[0] = bollX }
+    { bollen[0] = bollX; }
 
   for (var i = 0; i < thePins.length; i++) {
     if ((1.09+0.6)*(1.09+0.6) > (bollen[0]-thePins[i][0])*(bollen[0]-thePins[i][0])+(bollen[1]-thePins[i][1])*(bollen[1]-thePins[i][1])) {
@@ -727,8 +758,8 @@ function move() {
 
   for (var i = 0; i < thePins.length; i++) {
     var tot = Math.sqrt(thePins[i][2]*thePins[i][2]+thePins[i][3]*thePins[i][3]);
-    var pinacX = -(0.09*98.2*thePins[i][2])/sliding;
-    var pinacY = -(0.09*98.2*thePins[i][3])/sliding;
+    var pinacX = -(0.09*98.2*Math.sign(thePins[i][2]))/sliding;
+    var pinacY = -(0.09*98.2*Math.sign(thePins[i][3]))/sliding;
 
     var dx = [thePins[i][2], thePins[i][3], pinacX, pinacY];
     var newX = thePins[i][0] + h*dx[0];
